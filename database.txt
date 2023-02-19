@@ -1,0 +1,10 @@
+CREATE DATABASE testdb; 
+
+CREATE TABLE tutorials (
+    id int,
+    title varchar(255),
+    description varchar(255), 
+	published boolean DEFAULT false
+);
+
+select * from tutorials
