@@ -1,5 +1,5 @@
 CREATE DATABASE testdb; 
-
+changes
 CREATE TABLE tutorials (
     id int,
     title varchar(255),
