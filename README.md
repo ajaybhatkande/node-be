@@ -1,5 +1,5 @@
 # Node.js Rest APIs with Express & MySQL example
-this is ajay code
+
 For instruction, please visit:
 > [Build Node.js Rest APIs with Express & MySQL](https://www.bezkoder.com/node-js-rest-api-express-mysql/)
 

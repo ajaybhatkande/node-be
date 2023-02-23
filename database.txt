@@ -1,10 +1,9 @@
 CREATE DATABASE testdb; 
-changes
+
 CREATE TABLE tutorials (
     id int,
     title varchar(255),
     description varchar(255), 
 	published boolean DEFAULT false
 );
-thisis vijay code
 select * from tutorials

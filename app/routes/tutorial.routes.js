@@ -5,7 +5,18 @@ module.exports = app => {
 
   // Create a new Tutorial // 1. API Call
   console.log("1.Routs Called");
-  router.post("/", tutorials.create);
+  router.post("/create", tutorials.create);
+  router.post("/emp/create", tutorials.createEmp);
+
+  // create product API (Route url or api URl or url path----------------------------------)
+
+  //-----method-----url----------controller.fuction---------
+  router.post("/product/create", tutorials.createProductControllerFunction);
+
+
+  router.post("/college/create", tutorials.createcollegeControllerFunction);
+
+
 
   // Retrieve all Tutorials
   router.get("/", tutorials.findAll);
@@ -25,5 +36,5 @@ module.exports = app => {
   // Delete all Tutorials
   router.delete("/", tutorials.deleteAll);
 
-  app.use('/api/tutorials', router);
+  app.use('/api/', router);
 };

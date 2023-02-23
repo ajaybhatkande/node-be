@@ -3,11 +3,11 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-new file Channel
+
 var corsOptions = {
   origin: "http://localhost:8081"
 };
-from this change
+
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json

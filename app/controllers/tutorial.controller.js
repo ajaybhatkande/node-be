@@ -1,8 +1,8 @@
-const Tutorial = require("../models/tutorial.model.js");
+const Tutorial = require("../models/tutorial.model");
 
 // Create and Save a new Tutorial 2. Create Controller function call
 exports.create = (req, res) => {
-  console.log("2.Create Controller Function Called");
+  console.log("2.badam Create Controller Function Called");
   console.log("3.Request Controller Body Paramiters ", req.body);
   // Validate request
   if (!req.body) {
@@ -11,7 +11,7 @@ exports.create = (req, res) => {
     });
   }
 
-  // Create a Tutorial
+  // Create a product Tutorial
   const tutorial = new Tutorial({
     title: req.body.title,
     description: req.body.description,
@@ -28,11 +28,135 @@ exports.create = (req, res) => {
   });
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Create Product Controller function---------------------------
+exports.createProductControllerFunction = (req, res) => {
+  console.log("1.create product controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+
+  // Create a product json object
+  const product = {
+    productname: req.body.productname,
+    country: req.body.country
+  };
+
+  // calling to product model function
+  console.log("2. Calling to create product model function..");
+  //modle.modelfunction
+  Tutorial.createProductModelFuction(product, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Create college Controller function---------------------------
+exports.createcollegeControllerFunction = (req, res) => {
+  console.log("1.creatcollege  controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+
+  // Create a product json object
+  const college = {
+    studentname: req.body.studentname,
+    studentaddress	: req.body.studentaddress	
+
+  };
+  // calling to  college model function
+  console.log("2. Calling to create: college model function..");
+  //modle.modelfunction
+  Tutorial.createcollegeModelFuction(college, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+exports.createEmp = (req, res) => {
+  console.log("2.badam Create Controller Function Called");
+  console.log("3.Request Controller Body Paramiters ", req.body);
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+
+  // Create a Tutorial
+  const emptutorial = new Tutorial({
+    productname: req.body.productname,
+    country: req.body.country
+  });
+
+  // Save Tutorial in the database
+  Tutorial.createEmp(emptutorial, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
+
 // Retrieve all Tutorials from the database (with condition).
 exports.findAll = (req, res) => {
   const title = req.query.title;
 
-  Tutorial.getAll(title, (err, data) => {
+  productTutorial.getAll(title, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while retrieving tutorials."

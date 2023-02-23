@@ -1,17 +1,88 @@
 const sql = require("./db.js");
 
 // constructor
-const Tutorial = function(tutorial) {
+const Tutorial = function (tutorial) {
   this.title = tutorial.title;
   this.description = tutorial.description;
   this.published = tutorial.published;
 };
 
+const emp = function (tutorial) {
+  this.firstname = tutorial.firstname;
+  this.lastname = tutorial.lastname;
+};
 //3. Create Model function call.
-Tutorial.create = (newTutorial, result) => {
-  console.log("4.Create Model Function Called");
+Tutorial.create = (Tutorial, result) => {
+  console.log("ramesh. Create Model Function Called");
+  console.log("5.Request Model Body Paramiters ", Tutorial);
+  sql.query("INSERT INTO tutorials SET ?", Tutorial, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("created tutorial: tds ", { id: res.insertId, ...Tutorial });
+    result(null, { id: res.insertId, ...Tutorial });
+  });
+};
+
+
+
+
+
+
+// Product Model-------------------------------
+exports.createproductModelFuction = (product, result) => {
+  console.log("3. Create productModel Function Called");
+  sql.query("INSERT INTO product SET ?", product, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("created college:  ", { id: res.insertId, ...college });
+    result(null, { id: res.insertId, ...college });
+  });
+};
+
+
+
+
+
+
+
+
+
+
+// Product Model-------------------------------
+exports.createcollegeModelFuction = (product, result) => {
+  console.log("3. Create collegeModel Function Called");
+  sql.query("INSERT INTO college SET ?", product, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+
+    console.log("created college:  ", { id: res.insertId, ...product });
+    result(null, { id: res.insertId, ...product });
+  });
+};
+
+
+
+
+
+
+
+
+
+emp.createEmp = (newTutorial, result) => {
+  console.log("ramesh. Create Model Function Called");
   console.log("5.Request Model Body Paramiters ", newTutorial);
-  sql.query("INSERT INTO tutorials SET ?", newTutorial, (err, res) => {
+  sql.query("INSERT INTO emp SET ?", newTutorial, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -129,4 +200,5 @@ Tutorial.removeAll = result => {
   });
 };
 
-module.exports = Tutorial;
+// module.exports = Tutorial;
+// module.exports = emp;
