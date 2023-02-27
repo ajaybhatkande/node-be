@@ -142,7 +142,7 @@ exports.createstudentControllerFunction = (req, res) => {
 
 
 
-///----------------------------------------------------
+/// Start: 1. Addtion of three no number program --------------
 exports.additionFunction = (req, res) => {
   console.log("inside addition Function...");
 
@@ -150,25 +150,34 @@ exports.additionFunction = (req, res) => {
   const num1 = parseInt("1");
   const num2 = parseInt("2");
   const sum = num1 + num2;
-  console.log("sum.",sum);
+  console.log("sum.", sum);
 
   // responce to postman
-  res.send({ 
+  res.send({
     total: sum
   });
 
 }
-
-//---------------------------------------------------------
-
+//End :---------------------------------------------------------
 
 
 
+// start:-------------------------------------------------------
+exports.additionOfThreeNumberFunction = (req, res) => {
+  console.log("Inside Addition Function...");
+  //Addition logic.................................................
+  const num1 = parseInt("1");
+  const num2 = parseInt("2");
+  const num3 = parseInt("3");
+  const sum = num1 + num2 + num3
+  console.log("sum.", sum);
 
-
-
-
-
+  //Responce To Postman.........................................
+  res.send({
+    total: "sum"
+  });
+}
+//End -------------------------------------------------------------
 
 
 

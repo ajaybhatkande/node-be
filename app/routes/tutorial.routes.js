@@ -26,7 +26,8 @@ module.exports = app => {
   
   router.post("/program/addition", tutorials.additionFunction);
 
-
+//create addion api.................
+  router.post("/program/additionOfThreeNumber", tutorials.additionOfThreeNumberFunction);
 
   // Retrieve all Tutorials
   router.get("/", tutorials.findAll);
