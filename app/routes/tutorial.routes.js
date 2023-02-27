@@ -14,7 +14,17 @@ module.exports = app => {
   router.post("/product/create", tutorials.createProductControllerFunction);
 
 
-  router.post("/college/create", tutorials.createcollegeControllerFunction);
+  // router.post("/college/create", tutorials.createcollegeControllerFunction);
+
+
+ //create school API (Rout url or api URl or url path)
+  router.post("/school/create", tutorials.createschoolControllerFunction);
+  
+  
+  router.post("/student/create", tutorials.createstudentControllerFunction);
+  
+  
+  router.post("/program/addition", tutorials.additionFunction);
 
 
 

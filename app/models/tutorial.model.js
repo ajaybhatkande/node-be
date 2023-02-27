@@ -52,27 +52,37 @@ exports.createproductModelFuction = (product, result) => {
 
 
 
-
-
-
-
-// Product Model-------------------------------
-exports.createcollegeModelFuction = (product, result) => {
-  console.log("3. Create collegeModel Function Called");
-  sql.query("INSERT INTO college SET ?", product, (err, res) => {
+// school Model-------------------------------
+exports.createschooltControllerFunction = (school, result) => {
+  console.log("3. Create school Model Function Called");
+  console.log ("creat student model ");
+  sql.query("INSERT INTO school SET ?", school, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
-
-    console.log("created college:  ", { id: res.insertId, ...product });
-    result(null, { id: res.insertId, ...product });
+      console.log("created  student:  ", { id: res.insertId, ...school});
+    result(null, { id: res.insertId, ...school});
   });
 };
 
 
 
+
+// student Model-------------------------------
+exports.createstudentmodelFunction = (student, result) => {
+  console.log("3. Create student Model Function Called");
+  sql.query("INSERT INTO student SET ?", student, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+      console.log("created student:  ", { id: res.insertId, ...student});
+    result(null, { id: res.insertId, ...student});
+  });
+};
 
 
 

@@ -87,21 +87,19 @@ exports.createProductControllerFunction = (req, res) => {
 
 
 
-//Create college Controller function---------------------------
-exports.createcollegeControllerFunction = (req, res) => {
-  console.log("1.creatcollege  controller function.."); // log to check on terminal
+//Create school Controller function---------------------------
+exports.createschoolControllerFunction = (req, res) => {
+  console.log("1.creat school controller function.."); // log to check on terminal
   console.log("postmen request req.body.", req.body); // log to check on terminal
-
-  // Create a product json object
-  const college = {
-    studentname: req.body.studentname,
-    studentaddress	: req.body.studentaddress	
-
+  // Create aschool json object
+  const school = {
+    schoolname: req.body.schoolname,
+    schooladdress: req.body.schooladdress
   };
-  // calling to  college model function
-  console.log("2. Calling to create: college model function..");
+  // calling to schoolmodel function
+  console.log("2.Calling to create: school  model function..");
   //modle.modelfunction
-  Tutorial.createcollegeModelFuction(college, (err, data) => {
+  Tutorial.createschoolControllerFunction(school, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while creating the Tutorial."
@@ -114,6 +112,54 @@ exports.createcollegeControllerFunction = (req, res) => {
 
 
 
+//Create student Controller function---------------------------
+exports.createstudentControllerFunction = (req, res) => {
+  console.log("1.creat student controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+  // Create a student json object
+  const student = {
+    studentname: req.body.studentname,
+    studentaddress: req.body.studentaddress
+  };
+
+  console.log("testing studant object", student);
+  // calling to studentr model function
+  console.log("2.Calling to create: student model function..");
+  console.log("3calling student model");
+  //modle.modelfunction
+  Tutorial.createstudentmodelFunction(student, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+
+
+
+
+///----------------------------------------------------
+exports.additionFunction = (req, res) => {
+  console.log("inside addition Function...");
+
+  // addition logic
+  const num1 = parseInt("1");
+  const num2 = parseInt("2");
+  const sum = num1 + num2;
+  console.log("sum.",sum);
+
+  // responce to postman
+  res.send({ 
+    total: sum
+  });
+
+}
+
+//---------------------------------------------------------
 
 
 
