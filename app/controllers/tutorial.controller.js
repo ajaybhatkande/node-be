@@ -147,8 +147,8 @@ exports.additionFunction = (req, res) => {
   console.log("inside addition Function...");
 
   // addition logic
-  const num1 = parseInt("1");
-  const num2 = parseInt("2");
+  const num1 = parseInt(req.body.num1);
+  const num2 = parseInt(req.body.num2);
   const sum = num1 + num2;
   console.log("sum.", sum);
 
@@ -164,20 +164,114 @@ exports.additionFunction = (req, res) => {
 
 // start:-------------------------------------------------------
 exports.additionOfThreeNumberFunction = (req, res) => {
-  console.log("Inside Addition Function...");
+  console.log("Inside Addition Function...", req.body);
   //Addition logic.................................................
-  const num1 = parseInt("1");
-  const num2 = parseInt("2");
-  const num3 = parseInt("3");
+  const num1 = parseInt(req.body.num1);
+  const num2 = parseInt(req.body.num2);
+  const num3 = parseInt(req.body.num3);
   const sum = num1 + num2 + num3
   console.log("sum.", sum);
 
   //Responce To Postman.........................................
   res.send({
-    total: "sum"
+    total: sum
   });
 }
 //End -------------------------------------------------------------
+
+//start................................................
+exports.multiplicationOfTwoNumberFunction = (req, res) => {
+  console.log("Inside Multiplication Function...", req.body);
+
+  //multiplication logic................................
+  const num1 = parseInt(req.body.num1);
+  const num2 = parseInt(req.body.num2);
+  const sum = num1 * num2
+  console.log("sum.", sum);
+  //Responce To Postman.........................................
+  res.send({
+    total: sum
+  });
+}
+
+
+
+// start:-------------------------------------------------------
+exports.subscibtionFunction = (req, res) => {
+  console.log("Inside subscibtion Function...", req.body);
+
+  // subscibtion logic......................................
+  const num1 = parseInt("1");
+  console.log("num1 ajay value", num1);
+  const num2 = parseInt("2");
+  console.log("num2.", num2);
+  const sub = num1 - num2;
+  console.log("sub.", sub);
+
+  //Responce To Postman.........................................
+  res.send({
+    "result": sub
+  });
+}
+
+//program to check if a number is prime or not
+
+exports.PrimeNumberFunction = (req, res) => {
+  console.log("Inside prime Function...", req.body);
+
+  // take input from the user
+  const number = parseInt(req.body.num1);
+  let isPrime = true;
+
+  // check if number is equal to 1
+  if (number === 1) {
+    console.log("1 is neither prime nor composite number.");
+    res.send({
+      massage: "1 is neither prime nor composite number."
+    });
+  }
+
+  // check if number is greater than 1
+  else if (number > 1) {
+    // looping through 2 to number-1
+    for (let i = 2; i < number; i++) {
+      if (number % i == 0) {
+        isPrime = false;
+        break;
+      }
+    }
+
+    if (isPrime) {
+      console.log(`${number} is a prime number`);
+      res.send({
+        massage: `${number} is a prime number`
+      });
+    } else {
+      res.send({
+        massage: `${number} is a not prime number`
+      });
+    }
+  }
+  // check if number is less than 1
+  else {
+    console.log("The number is not a prime number.");
+    res.send({
+      massage: "The number is not a prime number."
+    });
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
