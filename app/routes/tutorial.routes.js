@@ -39,6 +39,10 @@ module.exports = app => {
  
   router.post("/program/primeNumber", tutorials.PrimeNumberFunction);
  
+ //reverse number.......
+ 
+  router.post("/program/reverseno", tutorials.reversenumberFunction);
+ 
  
  
  

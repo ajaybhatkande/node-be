@@ -268,6 +268,37 @@ exports.PrimeNumberFunction = (req, res) => {
 
 
 
+// program to check if the string is reversenumber
+
+exports.reversenumberFunction = (req, res) => {//start bracket
+  console.log("Inside check reversenumber Function...", req.body);
+
+  //logic ofreverse number
+  let number = parseInt(req.body.num1);
+  // Initializing the result variable 
+  let result = 0;
+  while (number > 0) {
+    // Getting the rightmost digit
+    rightmost = number % 10;
+    result = result * 10 + rightmost;
+    // Removing the rightmost digit from the number
+    number = Math.floor(number / 10);
+  }
+  console.log("Reversed number is : " + result)
+
+  res.send({
+    "result": result
+  });
+
+}
+
+
+
+
+
+
+
+
 
 
 
