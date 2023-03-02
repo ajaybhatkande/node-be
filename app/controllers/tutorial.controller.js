@@ -116,14 +116,14 @@ exports.createschoolControllerFunction = (req, res) => {
 exports.createstudentControllerFunction = (req, res) => {
   console.log("1.creat student controller function.."); // log to check on terminal
   console.log("postmen request req.body.", req.body); // log to check on terminal
-  // Create a student json object
+  // Create a student json object..........................................
   const student = {
     studentname: req.body.studentname,
     studentaddress: req.body.studentaddress
   };
 
   console.log("testing studant object", student);
-  // calling to studentr model function
+  // calling to studentr model function.......................................
   console.log("2.Calling to create: student model function..");
   console.log("3calling student model");
   //modle.modelfunction
@@ -178,63 +178,58 @@ exports.additionOfThreeNumberFunction = (req, res) => {
     total: sum
   });
 }
-//End: ---------------------------------------------------------
+//End: -------------------------------------------------------------
 
-//start................................................
+//start.............................................................
 exports.multiplicationOfTwoNumberFunction = (req, res) => {
   console.log("Inside Multiplication Function...", req.body);
 
-  //multiplication logic................................
+  //multiplication logic............................................
   const num1 = parseInt(req.body.num1);
   const num2 = parseInt(req.body.num2);
   const sum = num1 * num2
   console.log("sum.", sum);
-  
   //Responce To Postman.........................................
   res.send({
     total: sum
   });
 }
-
+//End............................................................
 
 
 // start:-------------------------------------------------------
 exports.subscibtionFunction = (req, res) => {
   console.log("Inside subscibtion Function...", req.body);
-
-  // subscibtion logic......................................
+  // subscibtion logic...........................................
   const num1 = parseInt(req.body.num1);
   const num2 = parseInt(req.body.num2);
   console.log("num2.", num2);
   const sub = num1 - num2;
   console.log("sub.", sub);
-
   //Responce To Postman.........................................
   res.send({
     "result": sub
   });
 }
+//End...........................................................
 
-//program to check if a number is prime or not
-
+//program to check if a number is prime or not..................
 exports.PrimeNumberFunction = (req, res) => {
   console.log("Inside prime Function...", req.body);
 
-  // take input from the user
+  // take input from the user...................................
   const number = parseInt(req.body.num1);
   let isPrime = true;
-
-  // check if number is equal to 1
+  // check if number is equal to 1...............................
   if (number === 1) {
     console.log("1 is neither prime nor composite number.");
     res.send({
       massage: "1 is neither prime nor composite number."
     });
   }
-
-  // check if number is greater than 1
+  // check if number is greater than 1........................
   else if (number > 1) {
-    // looping through 2 to number-1
+    // looping through 2 to number-1..........................
     for (let i = 2; i < number; i++) {
       if (number % i == 0) {
         isPrime = false;
@@ -253,7 +248,7 @@ exports.PrimeNumberFunction = (req, res) => {
       });
     }
   }
-  // check if number is less than 1
+  // check if number is less than 1..............................
   else {
     console.log("The number is not a prime number.");
     res.send({
@@ -262,27 +257,23 @@ exports.PrimeNumberFunction = (req, res) => {
   }
 
 }
+//End..................................................................
 
 
-
-
-
-
-
-// program to check if the string is reversenumber
+// program to check if the string is reversenumber..................
 
 exports.reversenumberFunction = (req, res) => {//start bracket
   console.log("Inside check reversenumber Function...", req.body);
 
-  //logic ofreverse number
+  //logic ofreverse number..........................................
   let number = parseInt(req.body.num1);
-  // Initializing the result variable 
+  // Initializing the result variable.................................
   let result = 0;
   while (number > 0) {
-    // Getting the rightmost digit
+    // Getting the rightmost digit...................................
     rightmost = number % 10;
     result = result * 10 + rightmost;
-    // Removing the rightmost digit from the number
+    // Removing the rightmost digit from the number....................
     number = Math.floor(number / 10);
   }
   console.log("Reversed number is : " + result)
@@ -292,14 +283,15 @@ exports.reversenumberFunction = (req, res) => {//start bracket
   });
 
 }
+//end..................................................................
 
-//even odd number...............................
+//even odd number....................................................
 
 exports.evenoddnumberFunction = (req, res) => {
   console.log("Inside check evenoddnumber Function...", req.body);
-  // take input from the user......................
+  // take input from the user........................................
   const number = parseInt(req.body.num1)
-  //check if the number is even......................
+  //check if the number is even.......................................
   if (number % 2 == 0) {
 
     console.log("The number is even.");
@@ -307,8 +299,7 @@ exports.evenoddnumberFunction = (req, res) => {
       message: "this no is even"
     });
   }
-
-  // if the number is odd............................
+  // if the number is odd..............................................
   else {
     console.log("The number is odd.");
     res.send({
@@ -319,11 +310,10 @@ exports.evenoddnumberFunction = (req, res) => {
 
 
 
-
-
-
+//test fuction program.....................................................
 exports.textFunction = (req, res) => {
   console.log("Inside  text Function...", req.body);
+
   const num1 = parseInt(req.body.firstName);
   const num2 = parseInt(req.body.lastName);
   const num3 = parseInt(req.body.contactNo);
@@ -341,16 +331,16 @@ exports.textFunction = (req, res) => {
 
 
 
-// program to check if the string is palindrome or not
+// program to check if the string is palindrome or not.......................
 
 exports.palindromeFunction = (req, res) => {
   console.log("Inside palindromeFunction...", req.body);
   const stringText = req.body.text;
-  // find the length of a string
+  // find the length of a string..............................................
   const len = stringText.length;
-  // loop through half of the string
+  // loop through half of the string............................................
   for (let i = 0; i < len / 2; i++) {
-    // check if first and last string are same
+    // check if first and last string are same.................................
     if (stringText[i] !== stringText[len - 1 - i]) {
       res.send({
         "result": "This string is not palendrom"
@@ -361,6 +351,35 @@ exports.palindromeFunction = (req, res) => {
     "result": "This string is palendrom"
   });
 }
+
+
+//fibonacci program...........................................................
+
+exports.fibonacciFunction = (req, res) => {
+  console.log("Inside fibonacci Function...", req.body);
+  
+  //take input from the user..................................................
+  const number = parseInt(req.body.value);
+    let n1 = 0, n2 = 1, nextTerm;
+  
+  console.log('Fibonacci Series:');
+  
+  let arr =[];
+  for (let i = 1; i <= number; i++) {
+      console.log(n1);
+      arr.push(n1)
+      nextTerm = n1 + n2;
+      n1 = n2;
+      n2 = nextTerm;
+  }
+
+  res.send({
+    "result":arr
+  });
+
+}
+
+
 
 
 

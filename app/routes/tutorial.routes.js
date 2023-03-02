@@ -23,36 +23,38 @@ module.exports = app => {
 
   router.post("/student/create", tutorials.createstudentControllerFunction);
 
-
+//addition api...........................................................
   router.post("/program/addition", tutorials.additionFunction);
 
-  //create addion api.................
+  //create addion api................................................
   router.post("/program/additionOfThreeNumber", tutorials.additionOfThreeNumberFunction);
 
-  //Create multipication api...............
+  //Create multipication api...............................................
 
   router.post("/program/multiplication", tutorials.multiplicationOfTwoNumberFunction);
 
-
+  //Substraction api.......................................................
   router.post("/program/subscibtion", tutorials.subscibtionFunction);
 
-
+  //Prime number api.......................................................
   router.post("/program/primeNumber", tutorials.PrimeNumberFunction);
 
-  //reverse number.......
+  //reverse number..........................................................
 
   router.post("/program/reverseno", tutorials.reversenumberFunction);
 
-  //even odd number pgm......
+  //even odd number pgm........................................................
   router.post("/program/evenoddnumber", tutorials.evenoddnumberFunction);
 
+  //Text api.....................................................................
   router.post("/program/text", tutorials.textFunction);
 
+  //palindrom api..................................................................
+  router.post("/program/palindrome", tutorials.palindromeFunction);
 
-  router.post("/programpalindrome", tutorials.palindromeFunction);
 
-
-
+//fiboncci api.........................................................
+  router.post("/program/fibonacci", tutorials.fibonacciFunction);
 
 
   // Retrieve all Tutorials
