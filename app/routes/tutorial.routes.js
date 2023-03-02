@@ -17,16 +17,16 @@ module.exports = app => {
   // router.post("/college/create", tutorials.createcollegeControllerFunction);
 
 
- //create school API (Rout url or api URl or url path)
+  //create school API (Rout url or api URl or url path)
   router.post("/school/create", tutorials.createschoolControllerFunction);
-  
-  
+
+
   router.post("/student/create", tutorials.createstudentControllerFunction);
-  
-  
+
+
   router.post("/program/addition", tutorials.additionFunction);
 
-//create addion api.................
+  //create addion api.................
   router.post("/program/additionOfThreeNumber", tutorials.additionOfThreeNumberFunction);
 
   //Create multipication api...............
@@ -36,17 +36,25 @@ module.exports = app => {
 
   router.post("/program/subscibtion", tutorials.subscibtionFunction);
 
- 
+
   router.post("/program/primeNumber", tutorials.PrimeNumberFunction);
- 
- //reverse number.......
- 
+
+  //reverse number.......
+
   router.post("/program/reverseno", tutorials.reversenumberFunction);
- 
- 
- 
- 
- 
+
+  //even odd number pgm......
+  router.post("/program/evenoddnumber", tutorials.evenoddnumberFunction);
+
+  router.post("/program/text", tutorials.textFunction);
+
+
+  router.post("/programpalindrome", tutorials.palindromeFunction);
+
+
+
+
+
   // Retrieve all Tutorials
   router.get("/", tutorials.findAll);
 

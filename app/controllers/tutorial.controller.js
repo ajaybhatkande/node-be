@@ -162,10 +162,11 @@ exports.additionFunction = (req, res) => {
 
 
 
-// start:-------------------------------------------------------
+//start:-------------------------------------------------------
 exports.additionOfThreeNumberFunction = (req, res) => {
   console.log("Inside Addition Function...", req.body);
-  //Addition logic.................................................
+
+  //Addition logic..............................................
   const num1 = parseInt(req.body.num1);
   const num2 = parseInt(req.body.num2);
   const num3 = parseInt(req.body.num3);
@@ -177,7 +178,7 @@ exports.additionOfThreeNumberFunction = (req, res) => {
     total: sum
   });
 }
-//End -------------------------------------------------------------
+//End: ---------------------------------------------------------
 
 //start................................................
 exports.multiplicationOfTwoNumberFunction = (req, res) => {
@@ -188,6 +189,7 @@ exports.multiplicationOfTwoNumberFunction = (req, res) => {
   const num2 = parseInt(req.body.num2);
   const sum = num1 * num2
   console.log("sum.", sum);
+  
   //Responce To Postman.........................................
   res.send({
     total: sum
@@ -201,9 +203,8 @@ exports.subscibtionFunction = (req, res) => {
   console.log("Inside subscibtion Function...", req.body);
 
   // subscibtion logic......................................
-  const num1 = parseInt("1");
-  console.log("num1 ajay value", num1);
-  const num2 = parseInt("2");
+  const num1 = parseInt(req.body.num1);
+  const num2 = parseInt(req.body.num2);
   console.log("num2.", num2);
   const sub = num1 - num2;
   console.log("sub.", sub);
@@ -292,12 +293,74 @@ exports.reversenumberFunction = (req, res) => {//start bracket
 
 }
 
+//even odd number...............................
+
+exports.evenoddnumberFunction = (req, res) => {
+  console.log("Inside check evenoddnumber Function...", req.body);
+  // take input from the user......................
+  const number = parseInt(req.body.num1)
+  //check if the number is even......................
+  if (number % 2 == 0) {
+
+    console.log("The number is even.");
+    res.send({
+      message: "this no is even"
+    });
+  }
+
+  // if the number is odd............................
+  else {
+    console.log("The number is odd.");
+    res.send({
+      message: "this no is odd"
+    });
+  }
+}
 
 
 
 
 
 
+exports.textFunction = (req, res) => {
+  console.log("Inside  text Function...", req.body);
+  const num1 = parseInt(req.body.firstName);
+  const num2 = parseInt(req.body.lastName);
+  const num3 = parseInt(req.body.contactNo);
+  const num4 = parseInt(req.body.email);
+  const num5 = parseInt(req.body.address);
+
+  console.log("The number.");
+
+  res.send(
+    req.body
+  );
+}
+
+
+
+
+
+// program to check if the string is palindrome or not
+
+exports.palindromeFunction = (req, res) => {
+  console.log("Inside palindromeFunction...", req.body);
+  const stringText = req.body.text;
+  // find the length of a string
+  const len = stringText.length;
+  // loop through half of the string
+  for (let i = 0; i < len / 2; i++) {
+    // check if first and last string are same
+    if (stringText[i] !== stringText[len - 1 - i]) {
+      res.send({
+        "result": "This string is not palendrom"
+      });
+    }
+  }
+  res.send({
+    "result": "This string is palendrom"
+  });
+}
 
 
 
