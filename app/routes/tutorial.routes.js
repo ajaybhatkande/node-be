@@ -59,6 +59,14 @@ module.exports = app => {
 //Armstrong api......................................................................
 router.post("/program/Armstrong", tutorials.ArmstrongFunction);
 
+//factorial number api..............................................................
+router.post("/program/factorial", tutorials.factorialFunction);
+
+//perfect number api................................................................
+router.post("/program/perfectNumber", tutorials.perfectNumberFunction);
+
+
+
 
 
 

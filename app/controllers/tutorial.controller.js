@@ -344,17 +344,65 @@ exports.ArmstrongFunction = (req, res) => {
 }
 
 
+//factorial number program.........................................
+
+exports.factorialFunction = (req, res) => {
+  console.log("Inside factorial Function...", req.body);
+  const number = parseInt(req.body.num)
+
+  // checking if number is negative
+  if (number < 0) {
+    console.log('Error! Factorial for negative number does not exist.');
+    res.send({
+      "result": "factorial number is negative"
+    });
+  }
+
+  // if number is 0
+  else if (number === 0) {
+    console.log(`The factorial of ${number} is 1.`);
+    res.send({
+      "result": `The factorial of ${number} is 1.`
+    });
+  }
+  // if number is positive
+  else {
+    let fact = 1;
+    for (i = 1; i <= number; i++) {
+      fact *= i;
+    }
+    console.log(`The factorial of ${number} is ${fact}.`);
+    res.send({
+      "result": `The factorial of ${number} is ${fact}.`
+    });
+  }
+
+}
 
 
-
-
-
-
-
-
-
-
-
+//perfect number program.............................................
+exports.perfectNumberFunction = (req, res) => {
+  console.log("Inside perfectNumber Function...", req.body);
+  var flag, number, remainder, addition = 0, i;
+  number = parseInt(req.body.num)
+  flag = number;
+  for (i = 0; i < number; i++) {
+    remainder = number % i;
+    if (remainder == 0) {
+      addition += i;
+    }
+  }
+  if (addition == flag) {
+    res.send({
+      "result": `-The inputed number is Perfect`
+    });
+  }
+  else {
+    res.send({
+      "result": `The inputed number is not Perfect`
+    });
+  }
+}
 
 
 
