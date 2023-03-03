@@ -28,19 +28,6 @@ exports.create = (req, res) => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Create Product Controller function---------------------------
 exports.createProductControllerFunction = (req, res) => {
   console.log("1.create product controller function.."); // log to check on terminal
@@ -64,29 +51,6 @@ exports.createProductControllerFunction = (req, res) => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Create school Controller function---------------------------
 exports.createschoolControllerFunction = (req, res) => {
   console.log("1.creat school controller function.."); // log to check on terminal
@@ -107,10 +71,6 @@ exports.createschoolControllerFunction = (req, res) => {
     else res.send(data);
   });
 };
-
-
-
-
 
 //Create student Controller function---------------------------
 exports.createstudentControllerFunction = (req, res) => {
@@ -136,12 +96,6 @@ exports.createstudentControllerFunction = (req, res) => {
   });
 };
 
-
-
-
-
-
-
 /// Start: 1. Addtion of three no number program --------------
 exports.additionFunction = (req, res) => {
   console.log("inside addition Function...");
@@ -159,8 +113,6 @@ exports.additionFunction = (req, res) => {
 
 }
 //End :---------------------------------------------------------
-
-
 
 //start:-------------------------------------------------------
 exports.additionOfThreeNumberFunction = (req, res) => {
@@ -195,7 +147,6 @@ exports.multiplicationOfTwoNumberFunction = (req, res) => {
   });
 }
 //End............................................................
-
 
 // start:-------------------------------------------------------
 exports.subscibtionFunction = (req, res) => {
@@ -259,9 +210,7 @@ exports.PrimeNumberFunction = (req, res) => {
 }
 //End..................................................................
 
-
 // program to check if the string is reversenumber..................
-
 exports.reversenumberFunction = (req, res) => {//start bracket
   console.log("Inside check reversenumber Function...", req.body);
 
@@ -286,7 +235,6 @@ exports.reversenumberFunction = (req, res) => {//start bracket
 //end..................................................................
 
 //even odd number....................................................
-
 exports.evenoddnumberFunction = (req, res) => {
   console.log("Inside check evenoddnumber Function...", req.body);
   // take input from the user........................................
@@ -308,8 +256,6 @@ exports.evenoddnumberFunction = (req, res) => {
   }
 }
 
-
-
 //test fuction program.....................................................
 exports.textFunction = (req, res) => {
   console.log("Inside  text Function...", req.body);
@@ -327,12 +273,7 @@ exports.textFunction = (req, res) => {
   );
 }
 
-
-
-
-
 // program to check if the string is palindrome or not.......................
-
 exports.palindromeFunction = (req, res) => {
   console.log("Inside palindromeFunction...", req.body);
   const stringText = req.body.text;
@@ -352,32 +293,77 @@ exports.palindromeFunction = (req, res) => {
   });
 }
 
-
 //fibonacci program...........................................................
-
 exports.fibonacciFunction = (req, res) => {
   console.log("Inside fibonacci Function...", req.body);
-  
   //take input from the user..................................................
   const number = parseInt(req.body.value);
-    let n1 = 0, n2 = 1, nextTerm;
-  
+  let n1 = 0, n2 = 1, nextTerm;
   console.log('Fibonacci Series:');
-  
-  let arr =[];
+
+  let arr = [];
   for (let i = 1; i <= number; i++) {
-      console.log(n1);
-      arr.push(n1)
-      nextTerm = n1 + n2;
-      n1 = n2;
-      n2 = nextTerm;
+    console.log(n1);
+    arr.push(n1)
+    nextTerm = n1 + n2;
+    n1 = n2;
+    n2 = nextTerm;
   }
 
   res.send({
-    "result":arr
+    "result": arr
   });
 
 }
+
+//Armstrong number program..........................................
+exports.ArmstrongFunction = (req, res) => {
+  console.log("Inside Armstrong Function...", req.body);
+  const number = parseInt(req.body.num)
+  let sum = 0;
+  // create a temporary variable......................................
+  let temp = number;
+  while (temp > 0) {
+    // finding the one's digit.......................................
+    let remainder = temp % 10;
+    sum += remainder * remainder * remainder;
+    // removing last digit from the number............................
+    temp = parseInt(temp / 10); // convert float into integer.........
+  }
+  // check the condition..............................................
+  if (sum == number) {
+    res.send({
+      "result": "This number Armstronf "
+    });
+  }
+  else {
+    res.send({
+      "result": "This number is not armstrong"
+    });
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

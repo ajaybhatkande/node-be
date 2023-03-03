@@ -56,6 +56,12 @@ module.exports = app => {
 //fiboncci api.........................................................
   router.post("/program/fibonacci", tutorials.fibonacciFunction);
 
+//Armstrong api......................................................................
+router.post("/program/Armstrong", tutorials.ArmstrongFunction);
+
+
+
+
 
   // Retrieve all Tutorials
   router.get("/", tutorials.findAll);
