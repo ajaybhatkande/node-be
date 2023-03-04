@@ -4,7 +4,7 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Create a new Tutorial // 1. API Call
-  console.log("1.Routs Called");
+  console.log("Tutorials Routs Called");
   router.post("/create", tutorials.create);
   router.post("/emp/create", tutorials.createEmp);
 
@@ -66,8 +66,8 @@ router.post("/program/factorial", tutorials.factorialFunction);
 router.post("/program/perfectNumber", tutorials.perfectNumberFunction);
 
 
-
-
+//Area of circle api..................................................................
+router.post("/program/areaofcircle", tutorials.areaofcircleFunction);
 
 
 

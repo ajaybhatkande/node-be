@@ -406,8 +406,18 @@ exports.perfectNumberFunction = (req, res) => {
 
 
 
+//Area of circle program.............................................
+exports.areaofcircleFunction = (req, res) => {
+  console.log("Inside areaofcircle Function...", req.body);
+  let pi = 3.14159265358979323846;
+  let radius = req.body.area;
+  // area method.
+  var aria = pi * radius * radius;
 
-
+  res.send({
+    "result": aria
+  });
+}
 
 
 
