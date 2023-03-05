@@ -421,9 +421,41 @@ exports.areaofcircleFunction = (req, res) => {
 
 
 
+//Area of triangle program.............................................
+exports.ariaoftriangleFunction = (req, res) => {
+  console.log("Inside aria of triangle Function...", req.body);
+
+  var side_a = parseInt(req.body.side1);
+  var side_b = parseInt(req.body.side2);
+  var side_c = parseInt(req.body.side3);
+  var perimeter = (side_a + side_b + side_c) / 2;
+  var area = Math.sqrt(perimeter * ((perimeter - side_a) * (perimeter - side_b) * (perimeter - side_c)));
+  console.log("Area of triangle: " + (area).toFixed(2));
+
+  res.send({
+    "result": area
+  });
+}
+
+
+//simple interest program..............................................
+exports.simpleinterestFunction = (req, res) => {
+  console.log("Inside simple interest Function...", req.body);
+
+
+  // It will calculate the simple interest
+  var p = parseInt(req.body.valu1);
+  var t = parseInt(req.body.valu2);
+  var r = parseInt(req.body.valu3);
+  var simpleinterst = (p * t * r) / 100;
+  
+  res.send({
+    "result": simpleinterst
+  });
 
 
 
+}
 
 
 

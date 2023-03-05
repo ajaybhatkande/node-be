@@ -69,9 +69,18 @@ router.post("/program/perfectNumber", tutorials.perfectNumberFunction);
 //Area of circle api..................................................................
 router.post("/program/areaofcircle", tutorials.areaofcircleFunction);
 
+//Area of triangle api.................................................................
+router.post("/program/areaoftriangle", tutorials.ariaoftriangleFunction);
+ 
 
 
-  // Retrieve all Tutorials
+//simple interest api.................................................................
+router.post("/program/simpleinterest", tutorials.simpleinterestFunction);
+ 
+
+
+
+// Retrieve all Tutorials
   router.get("/", tutorials.findAll);
 
   // Retrieve all published Tutorials
