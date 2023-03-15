@@ -448,7 +448,7 @@ exports.simpleinterestFunction = (req, res) => {
   var t = parseInt(req.body.valu2);
   var r = parseInt(req.body.valu3);
   var simpleinterst = (p * t * r) / 100;
-  
+
   res.send({
     "result": simpleinterst
   });
@@ -456,6 +456,68 @@ exports.simpleinterestFunction = (req, res) => {
 
 
 }
+
+
+//Create user Controller function---------------------------
+exports.createuser1ControllerFunction = (req, res) => {
+  console.log("1.creat user1 controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+
+  const user1 = {
+    userName: req.body.userName,
+    UserLastname: req.body.userlastname,
+    UserAddress: req.body.UserAddress,
+    userMobileNo: req.body.userMobileNo,
+    userEmailId: req.body.userEmailId
+  };
+
+  console.log("testing user1 object", user1);
+  // calling to user model function.......................................
+  console.log("2.Calling to create: user1 model function..");
+  console.log("3.calling user1 model");
+  //modle.modelfunction
+  Tutorial.createuser1modelFunction (user1, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+//Create user Controller function---------------------------
+exports.createHospitalControllerFunction = (req, res) => {
+  console.log("1.create Hospital  controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+
+  const Hospital= {
+    HospitalName	: req.body.HospitalName,
+    HospitalAddress: req.body.HospitalAddress,
+    HospitalEmail: req.body.HospitalEmail,
+    CreatedBy: req.body.CreatedBy
+  }
+  console.log("testing Hospital object", Hospital);
+  // calling to hospital model function.......................................
+  console.log("2.Calling to create: Hospital model function..");
+  console.log("3.callingHospital model");
+  //modle.modelfunction
+  Tutorial.createHospitalmodelFunction (Hospital, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+
+
+
+
 
 
 

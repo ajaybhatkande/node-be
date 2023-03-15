@@ -55,15 +55,15 @@ exports.createproductModelFuction = (product, result) => {
 // school Model-------------------------------
 exports.createschooltControllerFunction = (school, result) => {
   console.log("3. Create school Model Function Called");
-  console.log ("creat student model ");
+  console.log("creat student model ");
   sql.query("INSERT INTO school SET ?", school, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
-      console.log("created  student:  ", { id: res.insertId, ...school});
-    result(null, { id: res.insertId, ...school});
+    console.log("created  student:  ", { id: res.insertId, ...school });
+    result(null, { id: res.insertId, ...school });
   });
 };
 
@@ -79,14 +79,25 @@ exports.createstudentmodelFunction = (student, result) => {
       result(err, null);
       return;
     }
-      console.log("created student:  ", { id: res.insertId, ...student});
-    result(null, { id: res.insertId, ...student});
+    console.log("created student:  ", { id: res.insertId, ...student });
+    result(null, { id: res.insertId, ...student });
   });
 };
 
 
-
-
+//Hospital model.........................................................
+exports.createHospitalmodelFunction = (hospital, result) => {
+  console.log("3. Create student Model Function Called");
+  var query = `INSERT INTO Hospital (HospitalName, hospitalAddress,HospitalEmail,CreatedBy) VALUES ('${hospital.HospitalName}', '${hospital.HospitalAddress}', '${hospital.HospitalEmail}', '${hospital.CreatedBy}')`;
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+ result(null, { id: res.insertId, ...hospital });
+  });
+}
 
 
 emp.createEmp = (newTutorial, result) => {

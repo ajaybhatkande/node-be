@@ -77,8 +77,10 @@ router.post("/program/areaoftriangle", tutorials.ariaoftriangleFunction);
 //simple interest api.................................................................
 router.post("/program/simpleinterest", tutorials.simpleinterestFunction);
  
+router.post("/user1/create", tutorials.createuser1ControllerFunction);
 
 
+router.post("/Hospital/create", tutorials.createHospitalControllerFunction);
 
 // Retrieve all Tutorials
   router.get("/", tutorials.findAll);
