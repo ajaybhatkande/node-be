@@ -554,9 +554,9 @@ exports.createEmp = (req, res) => {
 
 // Retrieve all Tutorials from the database (with condition).
 exports.findAll = (req, res) => {
-  const title = req.query.title;
+  const title = req.body.HospitalName;
 
-  productTutorial.getAll(title, (err, data) => {
+  Tutorial.getAll(title, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while retrieving tutorials."
@@ -564,6 +564,26 @@ exports.findAll = (req, res) => {
     else res.send(data);
   });
 };
+
+
+// Retrieve all Tutorials from the database (with condition).
+exports.findAllstudent= (req, res) => {
+  const title = req.body.studentname;
+
+  Tutorial.getAll(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+
+
+
 
 // Find a single Tutorial by Id
 exports.findOne = (req, res) => {

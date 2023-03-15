@@ -83,7 +83,11 @@ router.post("/user1/create", tutorials.createuser1ControllerFunction);
 router.post("/Hospital/create", tutorials.createHospitalControllerFunction);
 
 // Retrieve all Tutorials
-  router.get("/", tutorials.findAll);
+  router.post("/hospital/get", tutorials.findAll);
+
+
+
+  router.post("/student/get", tutorials.findAllstudent);
 
   // Retrieve all published Tutorials
   router.get("/published", tutorials.findAllPublished);

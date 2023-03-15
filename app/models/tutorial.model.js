@@ -95,9 +95,50 @@ exports.createHospitalmodelFunction = (hospital, result) => {
       result(err, null);
       return;
     }
- result(null, { id: res.insertId, ...hospital });
+    result(null, { id: res.insertId, ...hospital });
   });
 }
+
+exports.getAll = (name, result) => {
+  console.log("name", name);
+  let query = "SELECT * FROM hospital";
+  if (name) {
+    query += ` WHERE HospitalName LIKE '%${name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("hospital: ", res);
+    result(null, res);
+  });
+
+};
+
+
+
+exports.getAll = (name, result) => {
+  console.log("name", name);
+  let query = "SELECT * FROM student";
+  if (name) {
+    query += ` WHERE studentName LIKE '%${name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("student: ", res);
+    result(null, res);
+  });
+
+};
+
 
 
 emp.createEmp = (newTutorial, result) => {
