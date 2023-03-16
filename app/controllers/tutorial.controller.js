@@ -476,7 +476,7 @@ exports.createuser1ControllerFunction = (req, res) => {
   console.log("2.Calling to create: user1 model function..");
   console.log("3.calling user1 model");
   //modle.modelfunction
-  Tutorial.createuser1modelFunction (user1, (err, data) => {
+  Tutorial.createuser1modelFunction(user1, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while creating the Tutorial."
@@ -492,8 +492,8 @@ exports.createHospitalControllerFunction = (req, res) => {
   console.log("1.create Hospital  controller function.."); // log to check on terminal
   console.log("postmen request req.body.", req.body); // log to check on terminal
 
-  const Hospital= {
-    HospitalName	: req.body.HospitalName,
+  const Hospital = {
+    HospitalName: req.body.HospitalName,
     HospitalAddress: req.body.HospitalAddress,
     HospitalEmail: req.body.HospitalEmail,
     CreatedBy: req.body.CreatedBy
@@ -503,7 +503,7 @@ exports.createHospitalControllerFunction = (req, res) => {
   console.log("2.Calling to create: Hospital model function..");
   console.log("3.callingHospital model");
   //modle.modelfunction
-  Tutorial.createHospitalmodelFunction (Hospital, (err, data) => {
+  Tutorial.createHospitalmodelFunction(Hospital, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while creating the Tutorial."
@@ -567,7 +567,7 @@ exports.findAll = (req, res) => {
 
 
 // Retrieve all Tutorials from the database (with condition).
-exports.findAllstudent= (req, res) => {
+exports.findAllstudent = (req, res) => {
   const title = req.body.studentname;
 
   Tutorial.getAll(title, (err, data) => {
@@ -642,6 +642,99 @@ exports.update = (req, res) => {
     }
   );
 };
+
+
+// Update a Tutorial identified by the id in the request
+exports.updatestudent = (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  const studentObject = {
+    studentname: req.body.studentname,
+  };
+
+  Tutorial.updatestudent(
+    req.params.id,
+    studentObject,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req.student.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Tutorial with id " + req.student.id
+          });
+        }
+      } else res.send(data);
+    }
+  );
+};
+
+
+
+
+// Delete a Tutorial with the specified id in the request
+exports.deletestudent = (req, res) => {
+  Tutorial.deleteStudent(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Tutorial with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send({
+      message: `Tutorial was deleted successfully!`
+    });
+  });
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Delete all Tutorials from the database.
+exports.deleteAll = (req, res) => {
+  Tutorial.removeAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while removing all tutorials."
+      });
+    else res.send({
+      message: `All Tutorials were deleted successfully!`
+    });
+  });
+};
+
+
+
+
+
+
+
+
 
 // Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {

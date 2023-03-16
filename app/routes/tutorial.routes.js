@@ -23,7 +23,7 @@ module.exports = app => {
 
   router.post("/student/create", tutorials.createstudentControllerFunction);
 
-//addition api...........................................................
+  //addition api...........................................................
   router.post("/program/addition", tutorials.additionFunction);
 
   //create addion api................................................
@@ -53,36 +53,36 @@ module.exports = app => {
   router.post("/program/palindrome", tutorials.palindromeFunction);
 
 
-//fiboncci api.........................................................
+  //fiboncci api.........................................................
   router.post("/program/fibonacci", tutorials.fibonacciFunction);
 
-//Armstrong api......................................................................
-router.post("/program/Armstrong", tutorials.ArmstrongFunction);
+  //Armstrong api......................................................................
+  router.post("/program/Armstrong", tutorials.ArmstrongFunction);
 
-//factorial number api..............................................................
-router.post("/program/factorial", tutorials.factorialFunction);
+  //factorial number api..............................................................
+  router.post("/program/factorial", tutorials.factorialFunction);
 
-//perfect number api................................................................
-router.post("/program/perfectNumber", tutorials.perfectNumberFunction);
-
-
-//Area of circle api..................................................................
-router.post("/program/areaofcircle", tutorials.areaofcircleFunction);
-
-//Area of triangle api.................................................................
-router.post("/program/areaoftriangle", tutorials.ariaoftriangleFunction);
- 
+  //perfect number api................................................................
+  router.post("/program/perfectNumber", tutorials.perfectNumberFunction);
 
 
-//simple interest api.................................................................
-router.post("/program/simpleinterest", tutorials.simpleinterestFunction);
- 
-router.post("/user1/create", tutorials.createuser1ControllerFunction);
+  //Area of circle api..................................................................
+  router.post("/program/areaofcircle", tutorials.areaofcircleFunction);
+
+  //Area of triangle api.................................................................
+  router.post("/program/areaoftriangle", tutorials.ariaoftriangleFunction);
 
 
-router.post("/Hospital/create", tutorials.createHospitalControllerFunction);
 
-// Retrieve all Tutorials
+  //simple interest api.................................................................
+  router.post("/program/simpleinterest", tutorials.simpleinterestFunction);
+
+  router.post("/user1/create", tutorials.createuser1ControllerFunction);
+
+
+  router.post("/Hospital/create", tutorials.createHospitalControllerFunction);
+
+  // Retrieve all Tutorials
   router.post("/hospital/get", tutorials.findAll);
 
 
@@ -91,6 +91,16 @@ router.post("/Hospital/create", tutorials.createHospitalControllerFunction);
 
   // Retrieve all published Tutorials
   router.get("/published", tutorials.findAllPublished);
+
+
+
+
+  // Update a Tutorial with id
+  router.put("/student/:id", tutorials.updatestudent);
+
+  // Delete a Tutorial with id
+  router.get("/student/delete/:id", tutorials.deletestudent);
+
 
   // Retrieve a single Tutorial with id
   router.get("/:id", tutorials.findOne);
