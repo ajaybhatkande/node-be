@@ -79,8 +79,24 @@ module.exports = app => {
 
   router.post("/user1/create", tutorials.createuser1ControllerFunction);
 
-
+//create hospital......................................................................
   router.post("/Hospital/create", tutorials.createHospitalControllerFunction);
+
+//patient creat..........................................................................
+  router.post("/patient2/create", tutorials.createpatient2ControllerFunction);
+
+  //find patient.........................................................
+  router.post("/patient2/get", tutorials.findAllpatient2);
+
+  
+  // Update a patient id.................................
+  router.put("/patient2/:id", tutorials.updatepatient2);
+
+   // Delete a patient with id
+   router.get("/patient2/delete/:id", tutorials.deletepatient2);
+
+
+
 
   // Retrieve all Tutorials
   router.post("/hospital/get", tutorials.findAll);
@@ -91,6 +107,10 @@ module.exports = app => {
 
   // Retrieve all published Tutorials
   router.get("/published", tutorials.findAllPublished);
+
+
+
+
 
 
 

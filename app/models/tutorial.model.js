@@ -206,7 +206,7 @@ Tutorial.getAllPublished = result => {
     result(null, res);
   });
 };
-
+//update student............................................
 exports.updatestudent = (id, tutorial, result) => {
   sql.query(
     "UPDATE  student SET studentname = ?  WHERE studentid = ?",
@@ -285,6 +285,95 @@ exports.deleteStudent = (id, result) => {
     result(null, res);
   });
 };
+
+
+
+
+//patient model.....Patient....................................................
+exports.createpatient2lmodelFunction = (patient2, result) => {
+  console.log("3. Create patient2 Model Function Called");
+var query = `INSERT INTO patient2 (patientName, patientLastname,patientAddress,createdBy) VALUES ('${patient2.patientName}', '${patient2.patientLastname}', '${patient2.patientAddress}', '${patient2.createdBy}')`;
+sql.query(query, (err, res) => {
+  if (err) {
+    console.log("error: ", err);
+    result(err, null);
+    return;
+  }
+  result(null, { id: res.insertId, ...patient2 });
+});
+}
+//getfind........................................................................
+exports.getAll = (name, result) => {
+  console.log("name", name);
+  let query = "SELECT * FROM patient2";
+  if (name) {
+    query += ` WHERE patientName LIKE '%${name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("patient2: ", res);
+    result(null, res);
+  });
+
+};
+
+//update patient.....................................................................
+exports.updatepatient2 = (id, tutorial, result) => {
+  sql.query(
+    "UPDATE patient2 SET patientName = ?  WHERE patientId  = ?",
+    [tutorial.patientName, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated patient2: ", { id: id, ...tutorial });
+      result(null, { id: id, ...tutorial });
+    }
+  );
+};
+
+//delet student .......................................................................
+exports.deletepatient2 = (id, result) => {
+  sql.query("DELETE FROM patient2 WHERE patientId = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    if (res.patientName == 0) {
+      // not found Tutorial with the id
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    console.log("deleted tutorial with id: ", id);
+    result(null, res);
+  });
+};
+
+
+
+
+
+
+
+
+
 
 // module.exports = Tutorial;
 // module.exports = emp;

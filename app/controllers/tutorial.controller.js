@@ -695,12 +695,102 @@ exports.deletestudent = (req, res) => {
       message: `Tutorial was deleted successfully!`
     });
   });
- 
+
 }
 
 
+//Create user Controller function---------------------------
+exports.createpatient2ControllerFunction = (req, res) => {
+  console.log("1.create patient1  controller function.."); // log to check on terminal
+
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+  const patient2 = {
+    patientName: req.body.patientName,
+    patientLastname: req.body.patientLastname,
+    patientAddress: req.body.patientAddress,
+    createdBy: req.body.createdBy
+  }
+  console.log("testing patient2 object", patient2);
+  // calling topatient model function.......................................
+  console.log("2.Calling to create: patient2 model function..");
+  console.log("3.calling patient model");
+  //modle.modelfunction
+  Tutorial.createpatient2lmodelFunction(patient2, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
 
 
+// patient find........................................
+exports.findAllpatient2 = (req, res) => {
+  const title = req.body.patientName;
+
+  Tutorial.getAll(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
+
+
+//Update a Tutorial identified by the id in the request....................
+exports.updatepatient2= (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  const patient2Object = {
+    patientName: req.body.patientName,
+  };
+
+  Tutorial.updatepatient2(
+    req.params.id,
+   patient2Object,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req.patient2.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Tutorial with id " + req.patient.id
+          });
+        }
+      } else res.send(data);
+    }
+  );
+};
+
+
+
+// Delete a Tutorial with the specified id in the request....................
+exports.deletepatient2 = (req, res) => {
+  Tutorial.deletepatient2(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Tutorial with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send({
+      message: `Tutorial was deleted successfully!`
+    });
+  });
+
+}
 
 
 
