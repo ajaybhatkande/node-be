@@ -898,4 +898,86 @@ exports.listitems = (err, data) => {
   listItems(items)
 
 };
- 
+exports.promises = (req, res) => {
+  console.log("1.create promises controller function.."); // log to check on terminal
+
+  function getSumNum(a, b) {
+    const customPromise = new Promise((resolve, reject) => {
+      const sum = a + b;
+  
+      if(sum <= 5){
+        resolve("Let's go!!")
+      } else {
+        reject(new Error('Oops!.. Number must be less than 5'))
+      }
+    })
+  
+    return customPromise
+  }
+  
+  // consuming the promise
+  getSumNum(1, 3).then(data => {
+    console.log(data)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
+//promisez2............................................................
+exports.promises2 = (req, res) => {
+  console.log("1.create promises2 controller function.."); // log to check on terminal
+
+  var promise = new Promise(function(resolve, reject) { 
+    const x = "geeksforgeeks"; 
+    const y = "geeksforgeeks"
+    if(x === y) { 
+      resolve(); 
+    } else { 
+      reject(); 
+    } 
+  }); 
+      
+  promise. 
+      then(function () { 
+          console.log('Success, You are a GEEK'); 
+      }). 
+      catch(function () { 
+          console.log('Some error has occurred'); 
+      });
+} 
+
+function isNumberValidation(field) {
+var isNumber = Number.isInteger(field);
+  if (isNumber) {
+
+    console.log(field.toString() , "is number")
+
+    if (field.toString().length >= 1 && field.toString().length <= 10) {
+      // if (fileYear <= 12 && fileYear >= 1) {
+      console.log(isNumber, "true")
+      return true;
+    } else {
+      console.log(isNumber, "false")
+      return false;
+    }
+  } else {
+    console.log(field, "false")
+    return false;
+  }
+}
+exports.number = (req, res) => {
+  console.log("1.create number controller function..");
+
+  var isId = (isNumberValidation(req.body.id));
+      if (!isId) {
+        return res.status(400).json({
+          success: 0,
+          message: "Invalid Input Request!"
+        });
+      }else{
+        console.log("true number")
+        
+      }
+  
+}

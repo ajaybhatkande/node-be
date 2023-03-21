@@ -122,6 +122,15 @@ router.post("/listitems/post", tutorials.listitems);
   // Delete a Tutorial with id
   router.get("/student/delete/:id", tutorials.deletestudent);
 
+ // promises..................................................
+  router.post("/promises/post", tutorials.promises);
+
+  // promises..................................................
+  router.post("/promises2/post", tutorials.promises2);
+
+    // promises..................................................
+    router.post("/number/post", tutorials.number);
+
 
   // Retrieve a single Tutorial with id
   router.get("/:id", tutorials.findOne);
