@@ -857,3 +857,45 @@ exports.deleteAll = (req, res) => {
     });
   });
 };
+
+
+// arguments error and data
+exports.fileErrorFirstCallback   = (err, data) => {
+   console.log("Function successfully executed");
+   
+   const fs = require("fs");
+   // This file does not exists
+   const file = "file.txt";
+   
+   // Error first callback
+   // function with two
+   // arguments error and data
+   const ErrorFirstCallback = (err, data) => {
+   if (err) {
+     return console.log(err);
+   }
+   console.log("Function successfully executed");
+   };
+   
+   // function execution
+   // This will return
+   // error because file do
+   // not exist
+   fs.readFile(file, ErrorFirstCallback);
+   
+};
+ //list item......................................................
+
+exports.listitems = (err, data) => {
+  const listItems = function(items) {
+    items.forEach(function(item) {
+      console.log(item)
+    })
+  }
+  
+  const items = ["Buy milk", "Buy coffee"]
+  
+  listItems(items)
+
+};
+ 

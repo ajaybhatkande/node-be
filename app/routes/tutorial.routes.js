@@ -110,10 +110,11 @@ module.exports = app => {
 
 
 
+ //error first callback....................................
+ router.post("/file/post", tutorials.fileErrorFirstCallback);
 
-
-
-
+//listitems.....................................................
+router.post("/listitems/post", tutorials.listitems);
 
   // Update a Tutorial with id
   router.put("/student/:id", tutorials.updatestudent);
