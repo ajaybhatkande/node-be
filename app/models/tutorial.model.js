@@ -99,6 +99,69 @@ exports.createHospitalmodelFunction = (hospital, result) => {
   });
 }
 
+
+
+//doctor model.........................................................
+exports.createdoctormodelFunction = (doctor, result) => {
+  console.log("3. Create doctor Model Function Called");
+  var query = `INSERT INTO doctor_tab ( first_name,address,speshalist,contact,user_name,password,created_by) VALUES  ('${doctor.first_name}','${doctor.address}','${doctor.speshalist}','${doctor.contact}','${doctor.user_name}','${doctor.password}','${doctor.created_by}')`;
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    result(null, { id: res.insertId, ...doctor  });
+  });
+}
+
+//emloyee model.........................................................
+exports.createemployeemodelFunction = (employee, result) => {
+  console.log("3. Create emloyee Model Function Called");
+  var query = `INSERT INTO employee_tb ( name,designation,age,user_name,password,role,created_by) VALUES  ('${employee.name}','${employee.designation}','${employee.age}','${employee.user_name}','${employee.password}','${employee.role}','${employee.created_by}')`;
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    result(null, { id: res.insertId, ...employee });
+  });
+}
+
+
+
+//patient model.........................................................
+exports.createpatientmodelFunction = (patient, result) => {
+  console.log("3. Create patient Model Function Called");
+  var query = `INSERT INTO patient_tb ( first_name,last_name,address,city,contact,email_id,created_by) VALUES  ('${patient.first_name}','${patient.last_name}','${patient.address}','${patient.city}','${patient.contact}','${patient.email_id}','${patient.created_by}')`;
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    result(null, { id: res.insertId, ...patient });
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 exports.getAll = (name, result) => {
   console.log("name", name);
   let query = "SELECT * FROM hospital";

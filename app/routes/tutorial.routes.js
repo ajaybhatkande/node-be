@@ -95,6 +95,14 @@ module.exports = app => {
    // Delete a patient with id
    router.get("/patient2/delete/:id", tutorials.deletepatient2);
 
+//create doctor......................................................................
+router.post("/doctor/create", tutorials.createdoctorControllerFunction);
+
+//create employee......................................................................
+router.post("/employee/create", tutorials.createemployeeControllerFunction);
+
+//create patient......................................................................
+router.post("/patient/create", tutorials.createpatientControllerFunction);
 
 
 
@@ -130,6 +138,8 @@ router.post("/listitems/post", tutorials.listitems);
 
     // promises..................................................
     router.post("/number/post", tutorials.number);
+
+    
 
 
   // Retrieve a single Tutorial with id

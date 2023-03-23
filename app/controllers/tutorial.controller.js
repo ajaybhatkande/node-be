@@ -513,9 +513,88 @@ exports.createHospitalControllerFunction = (req, res) => {
 };
 
 
+//Create doctor Controller function---------------------------
+exports.createdoctorControllerFunction = (req, res) => {
+  console.log("1.create doctor controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+  const doctor = {
+    first_name: req.body.firstname,
+    address: req.body.address,
+    speshalist: req.body.speshalist,
+    contact: req.body.contact,
+    user_name:req.body.username,
+    password:req.body. password,
+    created_by:req.body.createdby
+  }
+  console.log("testing doctor object", doctor);
+  // calling todoctormodel function.......................................
+  console.log("2.Calling to create: doctormodel function..");
+  console.log("3.callingdoctormodel");
+  //modle.modelfunction
+  Tutorial.createdoctormodelFunction(doctor, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
 
 
+//Create employee Controller function---------------------------
+exports.createemployeeControllerFunction = (req, res) => {
+  console.log("1.create employee controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+  const employee = {
+    name: req.body.name,
+    designation: req.body.designation,
+    age: req.body.age,
+    user_name: req.body.username,
+    password:req.body.password,
+    role:req.body.role,
+    created_by:req.body.createdby
+ }
+ console.log("testing doctor object", employee);
+ // calling todoctormodel function.......................................
+ console.log("2.Calling to create: emloyee model function..");
+ console.log("3.callingemloyeemodel");
+ //modle.modelfunction
+ Tutorial.createemployeemodelFunction(employee, (err, data) => {
+   if (err)
+     res.status(500).send({
+       message: err.message || "Some error occurred while creating the Tutorial."
+     });
+   else res.send(data);
+ });
+};
 
+
+//Create employee Controller function---------------------------
+exports.createpatientControllerFunction = (req, res) => {
+  console.log("1.create patient controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+  const patient = {
+    first_name: req.body.firstname,
+    last_name: req.body.lastname,
+    address: req.body.address,
+    city: req.body.city,
+    contact:req.body.contact,
+    email_id:req.body.emailid,
+    created_by:req.body.createdby
+ }
+ console.log("testing  patient object", patient);
+ // calling patient model function.......................................
+ console.log("2.Calling to create: patient model function..");
+ console.log("3.calling patient model");
+ //modle.modelfunction
+ Tutorial.createpatientmodelFunction(patient, (err, data) => {
+   if (err)
+     res.status(500).send({
+       message: err.message || "Some error occurred while creating the Tutorial."
+     });
+   else res.send(data);
+ });
+};
 
 
 
@@ -977,7 +1056,6 @@ exports.number = (req, res) => {
         });
       }else{
         console.log("true number")
-        
       }
   
 }

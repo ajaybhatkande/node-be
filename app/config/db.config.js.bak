@@ -2,5 +2,5 @@ module.exports = {
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",
-  DB: "dragtask_db"
+  DB: "employee_db"
 };
