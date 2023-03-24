@@ -145,17 +145,197 @@ exports.createpatientmodelFunction = (patient, result) => {
   });
 }
 
+//task model.........................................................
+exports.gcreatetaskmodelFunction = (task, result) => {
+  console.log("3. Create taskt Model Function Called");
+  var query = `INSERT INTO task_tb ( name,designation,preority,doctor_id,patient_id,assign_to,assign_by,created_by) VALUES  ('${task.name}','${task.designation}','${task.preority}','${task.doctor_id}','${task.patient_id}','${task.assign_to}','${task.assign_by}','${task.created_by}')`;
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    result(null, { id: res.insertId, ...task });
+  });
+}
+//find doctor...........................................................
+exports.getAlldoctor = (first_name, result) => {
+  console.log("first_name", first_name);
+  let query = "SELECT * FROM doctor_tab";
+  if (first_name) {
+    query += ` WHERE first_name LIKE '%${first_name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("doctor_tab: ", res);
+    result(null, res);
+  });
+
+};
+
+//findemployee..........................................................
+exports.getAllemployee = (name, result) => {
+  console.log("name", name);
+  let query = "SELECT * FROM employee_tb";
+  if (name) {
+    query += ` WHERE name LIKE '%${name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("employe_tb: ", res);
+    result(null, res);
+  });
+
+};
 
 
 
+//findpatient..........................................................
+exports.getAllpatient = (first_name, result) => {
+  console.log("first_name", first_name);
+  let query = "SELECT * FROM patient_tb";
+  if (first_name) {
+    query += ` WHERE first_name LIKE '%${first_name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("patient_tb: ", res);
+    result(null, res);
+  });
+
+};
+
+//find task..........................................................
+exports.getAlltask = (name, result) => {
+  console.log("name", name);
+  let query = "SELECT * FROM task_tb";
+  if (name) {
+    query += ` WHERE name LIKE '%${name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("task_tb: ", res);
+    result(null, res);
+  });
+
+};
+//update doctor...........................................
+exports.updatedoctor = (id, tutorial, result) => {
+  sql.query(
+    "UPDATE  doctor_tab SET first_name = ?  WHERE doctor_id  = ?",
+    [tutorial.first_name, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated doctor_tab : ", { id: id, ...tutorial });
+      result(null, { id: id, ...tutorial });
+    }
+  );
+};
 
 
+//update employee..........................................
+exports.updateemployee = (id, tutorial, result) => {
+  sql.query(
+    "UPDATE  employee_tb SET name = ?  WHERE employee_id   = ?",
+    [tutorial.name, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated doctor_tab : ", { id: id, ...tutorial });
+      result(null, { id: id, ...tutorial });
+    }
+  );
+};
+
+//update patient..........................................
+exports.updatepatient = (id, tutorial, result) => {
+  sql.query(
+    "UPDATE   patient_tb SET first_name = ?  WHERE  patient_id   = ?",
+    [tutorial.first_name, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated  patient_tb : ", { id: id, ...tutorial });
+      result(null, { id: id, ...tutorial });
+    }
+  );
+};
 
 
+//update task..........................................
+exports.updatetask = (id, tutorial, result) => {
+  sql.query(
+    "UPDATE  task_tb SET name = ?  WHERE  task_id   = ?",
+    [tutorial.name, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
 
+      if (res.affectedRows == 0) {
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
 
-
-
+      console.log("updated  task_tb : ", { id: id, ...tutorial });
+      result(null, { id: id, ...tutorial });
+    }
+  );
+};
 
 
 

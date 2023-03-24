@@ -596,13 +596,211 @@ exports.createpatientControllerFunction = (req, res) => {
  });
 };
 
+//Create task Controller function---------------------------
+exports.createtaskControllerFunction = (req, res) => {
+  console.log("1.create patient controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+  const task = {
+    name: req.body.name,
+    designation: req.body.designation,
+    preority: req.body.preority,
+    doctor_id: req.body.doctorid,
+    patient_id:req.body.patientid,
+    assign_to:req.body.assignto,
+    assign_by:req.body.assignby,
+    created_by:req.body.createdby
+ }
+ console.log("testing   task object", task);
+ // calling patient model function.......................................
+ console.log("2.Calling to create: task model function..");
+ console.log("3.calling task model");
+ //modle.modelfunction
+ Tutorial.createtaskmodelFunction(task, (err, data) => {
+   if (err)
+     res.status(500).send({
+       message: err.message || "Some error occurred while creating the Tutorial."
+     });
+   else res.send(data);
+ });
+};
+
+// Retrieve all Tutorials from the database (with condition).
+// Retrieve all Tutorials from the database (with condition).
+exports.findAlldoctor = (req, res) => {
+  const title = req.body.firstname;
+
+  Tutorial.getAlldoctor(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
+
+// Retrieve all Tutorials from the database (with condition).
+exports.findAllemployee= (req, res) => {
+  const title = req.body.name;
+
+  Tutorial.getAllemployee(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
+
+// Retrieve all Tutorials from the database (with condition).
+exports.findAllpatient= (req, res) => {
+  const title = req.body.first_name;
+
+  Tutorial.getAllpatient(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
 
 
+// Retrieve all Tutorials from the database (with condition).
+exports.findAlltask= (req, res) => {
+  const title = req.body.name;
 
+  Tutorial.getAlltask(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
 
+// Update a Tutorial identified by the id in the request
+exports.updatedoctor= (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  const doctorObject = {
+    first_name: req.body.name
+  };
 
+  Tutorial.updatedoctor(
+    req.params.id,
+    doctorObject,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req.doctor.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Tutorial with id " + req.doctor.id
+          });
+        }
+      } else res.send(data);
+    }
+  );
+};
 
+// Update employee Tutorial identified by the id in the request
+exports.updateemployee = (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  const employeeObject = {
+    name: req.body.name
+  };
 
+  Tutorial.updateemployee (
+    req.params.id,
+    employeeObject,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req.employee.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Tutorial with id " + req.employee .id
+          });
+        }
+      } else res.send(data);
+    }
+  );
+};
+
+// Update Tutorial identified by the id in the request
+exports.updatepatient = (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  const patientObject = {
+    first_name: req.body.name
+  };
+
+  Tutorial.updatepatient (
+    req.params.id,
+   patientObject,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req.patient.id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Tutorial with id " + req.patient .id
+          });
+        }
+      } else res.send(data);
+    }
+  );
+};
+
+// Update Tutorial identified by the id in the request
+exports.updatetask = (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  const taskObject = {
+    name: req.body.name
+  };
+
+  Tutorial.updatetask (
+    req.params.id,
+    taskObject,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req.task .id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Tutorial with id " + req.task .id
+          });
+        }
+      } else res.send(data);
+    }
+  );
+};
 
 
 exports.createEmp = (req, res) => {
