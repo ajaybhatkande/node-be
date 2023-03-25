@@ -129,8 +129,6 @@ exports.createemployeemodelFunction = (employee, result) => {
   });
 }
 
-
-
 //patient model.........................................................
 exports.createpatientmodelFunction = (patient, result) => {
   console.log("3. Create patient Model Function Called");
@@ -197,8 +195,6 @@ exports.getAllemployee = (name, result) => {
   });
 
 };
-
-
 
 //findpatient..........................................................
 exports.getAllpatient = (first_name, result) => {
@@ -314,7 +310,7 @@ exports.updatepatient = (id, tutorial, result) => {
 
 
 //update task..........................................
-exports.updatetask = (id, tutorial, result) => {
+exports.updatetaskt = (id, tutorial, result) => {
   sql.query(
     "UPDATE  task_tb SET name = ?  WHERE  task_id   = ?",
     [tutorial.name, id],
@@ -336,6 +332,91 @@ exports.updatetask = (id, tutorial, result) => {
     }
   );
 };
+
+
+//delet doctor ...................................................
+exports.deletedoctor = (id, result) => {
+  sql.query("DELETE FROM doctor_tab WHERE doctor_id  = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    if (res.first_name == 0) {
+      // not found Tutorial with the id
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    console.log("deleted tutorial with id: ", id);
+    result(null, res);
+  });
+};
+
+
+
+//delet employee ...................................................
+exports.deleteemployee = (id, result) => {
+  sql.query("DELETE FROM employee_tb WHERE employee_id    = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    if (res.name == 0) {
+      // not found Tutorial with the id
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    console.log("deleted tutorial with id: ", id);
+    result(null, res);
+  });
+};
+
+
+//delet patient...................................................
+exports.deletepatient = (id, result) => {
+  sql.query("DELETE FROM patient_tb WHERE patient_id    = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    if (res.first_name == 0) {
+      // not found Tutorial with the id
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    console.log("deleted tutorial with id: ", id);
+    result(null, res);
+  });
+};
+
+//delete task...................................................
+exports.deletetask = (id, result) => {
+  sql.query("DELETE FROM task_tb WHERE  task_id    = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    if (res.name == 0) {
+      // not found Tutorial with the id
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    console.log("deleted tutorial with id: ", id);
+    result(null, res);
+  });
+};
+
 
 
 
@@ -508,26 +589,10 @@ Tutorial.removeAll = result => {
 
 
 
-//delet student ...................................................
 
-exports.deleteStudent = (id, result) => {
-  sql.query("DELETE FROM student WHERE studentid = ?", id, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
 
-    if (res.studentname == 0) {
-      // not found Tutorial with the id
-      result({ kind: "not_found" }, null);
-      return;
-    }
 
-    console.log("deleted tutorial with id: ", id);
-    result(null, res);
-  });
-};
+
 
 
 

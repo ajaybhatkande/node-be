@@ -624,8 +624,8 @@ exports.createtaskControllerFunction = (req, res) => {
  });
 };
 
-// Retrieve all Tutorials from the database (with condition).
-// Retrieve all Tutorials from the database (with condition).
+
+// Retrieve all find doctor Tutorials from the database (with condition).....................
 exports.findAlldoctor = (req, res) => {
   const title = req.body.firstname;
 
@@ -638,7 +638,7 @@ exports.findAlldoctor = (req, res) => {
   });
 };
 
-// Retrieve all Tutorials from the database (with condition).
+// Retrieve all find employee Tutorials from the database (with condition).........
 exports.findAllemployee= (req, res) => {
   const title = req.body.name;
 
@@ -651,7 +651,7 @@ exports.findAllemployee= (req, res) => {
   });
 };
 
-// Retrieve all Tutorials from the database (with condition).
+// Retrieve all find patient Tutorials from the database (with condition)............
 exports.findAllpatient= (req, res) => {
   const title = req.body.first_name;
 
@@ -665,7 +665,7 @@ exports.findAllpatient= (req, res) => {
 };
 
 
-// Retrieve all Tutorials from the database (with condition).
+// Retrieve all find task Tutorials from the database (with condition).......
 exports.findAlltask= (req, res) => {
   const title = req.body.name;
 
@@ -678,7 +678,7 @@ exports.findAlltask= (req, res) => {
   });
 };
 
-// Update a Tutorial identified by the id in the request
+// Update a doctor Tutorial identified by the id in the request............
 exports.updatedoctor= (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -709,7 +709,7 @@ exports.updatedoctor= (req, res) => {
   );
 };
 
-// Update employee Tutorial identified by the id in the request
+// Update employee Tutorial identified by the id in the request........
 exports.updateemployee = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -740,7 +740,7 @@ exports.updateemployee = (req, res) => {
   );
 };
 
-// Update Tutorial identified by the id in the request
+// Update  a patient Tutorial identified by the id in the request.......................
 exports.updatepatient = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -771,7 +771,7 @@ exports.updatepatient = (req, res) => {
   );
 };
 
-// Update Tutorial identified by the id in the request
+// Update task Tutorial identified by the id in the request.................
 exports.updatetask = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -801,6 +801,96 @@ exports.updatetask = (req, res) => {
     }
   );
 };
+
+
+// Delete a doctor Tutorial with the specified id in the request......................
+exports.deletedoctor = (req, res) => {
+  Tutorial.deletedoctor(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Tutorial with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send({
+      message: `Tutorial was deleted successfully!`
+    });
+  });
+
+}
+
+// Delete a employee Tutorial with the specified id in the request.........................
+exports.deleteemployee= (req, res) => {
+  Tutorial.deleteemployee(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Tutorial with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send({
+      message: `Tutorial was deleted successfully!`
+    });
+  });
+
+}
+
+// Delete a patient Tutorial with the specified id in the request......................
+exports.deletepatient= (req, res) => {
+  Tutorial.deletepatient(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Tutorial with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send({
+      message: `Tutorial was deleted successfully!`
+    });
+  });
+
+}
+
+
+// Delete a task Tutorial with the specified id in the request..........................
+exports.deletetask = (req, res) => {
+  Tutorial.deletetask (req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Tutorial with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send({
+      message: `Tutorial was deleted successfully!`
+    });
+  });
+
+}
+
+
+
+
+
+
+
+
 
 
 exports.createEmp = (req, res) => {
