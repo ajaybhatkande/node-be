@@ -111,7 +111,7 @@ exports.createdoctormodelFunction = (doctor, result) => {
       result(err, null);
       return;
     }
-    result(null, { id: res.insertId, ...doctor  });
+    result(null, { id: res.insertId, ...doctor });
   });
 }
 
@@ -156,6 +156,22 @@ exports.gcreatetaskmodelFunction = (task, result) => {
     result(null, { id: res.insertId, ...task });
   });
 }
+//user model.........................................................
+exports.createusermodelFunction = (user, result) => {
+  console.log("3. Create user Model Function Called");
+  var query = `INSERT INTO user_tb ( first_name,last_name,email_id,password,is_active,created_by) VALUES ('${user.first_name}','${user.last_name}','${user.email_id}','${user.password}','${user.is_active}','${user.created_by}')`;
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    result(null, { id: res.insertId, ...user });
+  });
+}
+
+
+
 //find doctor...........................................................
 exports.getAlldoctor = (first_name, result) => {
   console.log("first_name", first_name);
@@ -235,6 +251,31 @@ exports.getAlltask = (name, result) => {
   });
 
 };
+//find user...........................................................
+exports.getAlluser = (first_name, result) => {
+  console.log("first_name", first_name);
+  let query = "SELECT * FROM user_tb";
+  if (first_name) {
+    query += ` WHERE first_name LIKE '%${first_name}%'`;
+  }
+  console.log("query", query);
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("user_tb: ", res);
+    result(null, res);
+  });
+
+};
+
+
+
+
+
+
 //update doctor...........................................
 exports.updatedoctor = (id, tutorial, result) => {
   sql.query(
@@ -334,6 +375,36 @@ exports.updatetaskt = (id, tutorial, result) => {
 };
 
 
+//update user..........................................
+exports.updateuser = (userid, user, result) => {
+  var query = `UPDATE user_tb SET first_name = '${user.first_name}', last_name= '${user.first_name}' , email_id= '${user.email_id}', password= '${user.password}' , is_active= '${user.is_active}', created_by= '${user.created_by}'WHERE user_id = '${user.userid}';`;
+  sql.query(query,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+
+      if (res.affectedRows == 0) {
+        // not found user with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+
+      console.log("updated user_tb : ", { userid: userid, ...user });
+      result(null, { userid: userid, ...user });
+    }
+  );
+};
+
+
+
+
+
+
+
+
 //delet doctor ...................................................
 exports.deletedoctor = (id, result) => {
   sql.query("DELETE FROM doctor_tab WHERE doctor_id  = ?", id, (err, res) => {
@@ -417,6 +488,26 @@ exports.deletetask = (id, result) => {
   });
 };
 
+
+//delet user ...................................................
+exports.deleteuser = (id, result) => {
+  sql.query("DELETE FROM user_tb WHERE user_id   = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+
+    if (res.first_name == 0) {
+      // not found Tutorial with the id
+      result({ kind: "not_found" }, null);
+      return;
+    }
+
+    console.log("deleted tutorial with id: ", id);
+    result(null, res);
+  });
+};
 
 
 
@@ -600,15 +691,15 @@ Tutorial.removeAll = result => {
 //patient model.....Patient....................................................
 exports.createpatient2lmodelFunction = (patient2, result) => {
   console.log("3. Create patient2 Model Function Called");
-var query = `INSERT INTO patient2 (patientName, patientLastname,patientAddress,createdBy) VALUES ('${patient2.patientName}', '${patient2.patientLastname}', '${patient2.patientAddress}', '${patient2.createdBy}')`;
-sql.query(query, (err, res) => {
-  if (err) {
-    console.log("error: ", err);
-    result(err, null);
-    return;
-  }
-  result(null, { id: res.insertId, ...patient2 });
-});
+  var query = `INSERT INTO patient2 (patientName, patientLastname,patientAddress,createdBy) VALUES ('${patient2.patientName}', '${patient2.patientLastname}', '${patient2.patientAddress}', '${patient2.createdBy}')`;
+  sql.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    result(null, { id: res.insertId, ...patient2 });
+  });
 }
 //getfind........................................................................
 exports.getAll = (name, result) => {

@@ -625,6 +625,39 @@ exports.createtaskControllerFunction = (req, res) => {
 };
 
 
+//Create user Controller function---------------------------
+exports.createuserControllerFunction = (req, res) => {
+  console.log("1.create user controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body); // log to check on terminal
+  const user = {
+    first_name: req.body.firstname,
+    last_name: req.body.lastname,
+    email_id: req.body.emailid,
+    password: req.body.password,
+    is_active:req.body.isactive,
+    created_by:req.body. createdby
+   
+  }
+  console.log("testing user object", user);
+  // calling todoctormodel function.......................................
+  console.log("2.Calling to create: doctormodel function..");
+  console.log("3.callingusermodel");
+  //modle.modelfunction
+  Tutorial.createusermodelFunction(user, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+
+
+
+
 // Retrieve all find doctor Tutorials from the database (with condition).....................
 exports.findAlldoctor = (req, res) => {
   const title = req.body.firstname;
@@ -665,7 +698,7 @@ exports.findAllpatient= (req, res) => {
 };
 
 
-// Retrieve all find task Tutorials from the database (with condition).......
+// Retrieve all find task Tutorials from the database (with condition).............
 exports.findAlltask= (req, res) => {
   const title = req.body.name;
 
@@ -677,6 +710,27 @@ exports.findAlltask= (req, res) => {
     else res.send(data);
   });
 };
+
+
+// Retrieve all find doctor Tutorials from the database (with condition).....................
+exports.findAlluser = (req, res) => {
+  const title = req.body.first_name;
+
+  Tutorial.getAlluser(title, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+};
+
+
+
+
+
+
+
 
 // Update a doctor Tutorial identified by the id in the request............
 exports.updatedoctor= (req, res) => {
@@ -801,6 +855,47 @@ exports.updatetask = (req, res) => {
     }
   );
 };
+// Update a user Tutorial identified by the id in the request............
+exports.updateuser = (req, res) => {
+  // Validate Request
+  if (!req.body) {
+    res.status(400).send({
+      message: "Content can not be empty!"
+    });
+  }
+  const userObject = {
+    user_id:req.body.userid,
+    first_name: req.body.firstname,
+    last_name:req.body.lastname,
+    email_id:req.body.emailid,
+    password:req.body.password,
+    is_active:req.body.isactive,
+    created_by:req.body.createdby
+  };
+
+  Tutorial.updateuser (
+    req.params.userid,
+    userObject,
+    (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Tutorial with id ${req. id}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Error updating Tutorial with id " + req.id
+          });
+        }
+      } else res.send(data);
+    }
+  );
+};
+
+
+
+
+
 
 
 // Delete a doctor Tutorial with the specified id in the request......................
@@ -867,6 +962,25 @@ exports.deletepatient= (req, res) => {
 // Delete a task Tutorial with the specified id in the request..........................
 exports.deletetask = (req, res) => {
   Tutorial.deletetask (req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Tutorial with id ${req.params.id}.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Tutorial with id " + req.params.id
+        });
+      }
+    } else res.send({
+      message: `Tutorial was deleted successfully!`
+    });
+  });
+
+}
+// Delete a user Tutorial with the specified id in the request......................
+exports.deleteuser = (req, res) => {
+  Tutorial.deleteuser(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({

@@ -107,6 +107,10 @@ router.post("/patient/create", tutorials.createpatientControllerFunction);
 //create task......................................................................
 router.post("/task/create", tutorials.createtaskControllerFunction);
 
+//create user......................................................................
+router.post("/user/create", tutorials.createuserControllerFunction);
+
+
 
 //find doctor........................................................................
 router.post("/doctor/get", tutorials.findAlldoctor);
@@ -120,6 +124,9 @@ router.post("/patient/get", tutorials.findAllpatient);
 //find task........................................................................
 router.post("/task/get", tutorials.findAlltask);
 
+//find user........................................................................
+router.post("/user/get", tutorials.findAlluser);
+
   // Update a Tutorial with doctor id..............................................
   router.put("/doctor/:id", tutorials.updatedoctor);
 
@@ -131,6 +138,10 @@ router.post("/task/get", tutorials.findAlltask);
 
  // Update a Tutorial with task id..............................................
  router.put("/task/:id", tutorials.updatetask);
+ 
+  // Update a Tutorial with user id..............................................
+  router.post("/user", tutorials.updateuser);
+
 
 
   // Delete a Tutorial with doctor id.............................................
@@ -146,6 +157,8 @@ router.post("/task/get", tutorials.findAlltask);
  // Delete a Tutorial with task id...................................................
  router.get("/task/delete/:id", tutorials.deletetask);
 
+ // Delete a Tutorial with user id.............................................
+ router.get("/user/delete/:id", tutorials.deleteuser );
 
 
 
