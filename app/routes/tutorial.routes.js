@@ -160,6 +160,10 @@ router.post("/user/get", tutorials.findAlluser);
  // Delete a Tutorial with user id.............................................
  router.get("/user/delete/:id", tutorials.deleteuser );
 
+//create construct.....................................................................
+router.post("/construct/create", tutorials.createconstructControllerFunction);
+
+
 
 
 

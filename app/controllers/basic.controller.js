@@ -35,15 +35,15 @@ exports.createArray = (req, res) => {
 //for loop function..........
 exports.createforloop = (req, res) => {
   console.log("this is createforloopay function..");
-  //   var arrayNum = [];
-  //   let number = parseInt(req.body.num)
-  //   for (let i = 1; i <= number; i++) {
-  //     console.log("I can count to " + i)
-  //     arrayNum.push(i);c 
-  //   }
-  //   res.send({
-  //     "result": arrayNum
-  //   });
+    var arrayNum = [];
+    let number = parseInt(req.body.num)
+    for (let i = 1; i <= number; i++) {
+      console.log("I can count to " + i)
+      arrayNum.push(i);
+    }
+    res.send({
+      "result": arrayNum
+    });
   //FOR LOOP...............................................
   //const person = { name: 'Steve'};
   // let booksRead = 10;

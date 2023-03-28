@@ -522,9 +522,9 @@ exports.createdoctorControllerFunction = (req, res) => {
     address: req.body.address,
     speshalist: req.body.speshalist,
     contact: req.body.contact,
-    user_name:req.body.username,
-    password:req.body. password,
-    created_by:req.body.createdby
+    user_name: req.body.username,
+    password: req.body.password,
+    created_by: req.body.createdby
   }
   console.log("testing doctor object", doctor);
   // calling todoctormodel function.......................................
@@ -550,22 +550,22 @@ exports.createemployeeControllerFunction = (req, res) => {
     designation: req.body.designation,
     age: req.body.age,
     user_name: req.body.username,
-    password:req.body.password,
-    role:req.body.role,
-    created_by:req.body.createdby
- }
- console.log("testing doctor object", employee);
- // calling todoctormodel function.......................................
- console.log("2.Calling to create: emloyee model function..");
- console.log("3.callingemloyeemodel");
- //modle.modelfunction
- Tutorial.createemployeemodelFunction(employee, (err, data) => {
-   if (err)
-     res.status(500).send({
-       message: err.message || "Some error occurred while creating the Tutorial."
-     });
-   else res.send(data);
- });
+    password: req.body.password,
+    role: req.body.role,
+    created_by: req.body.createdby
+  }
+  console.log("testing doctor object", employee);
+  // calling todoctormodel function.......................................
+  console.log("2.Calling to create: emloyee model function..");
+  console.log("3.callingemloyeemodel");
+  //modle.modelfunction
+  Tutorial.createemployeemodelFunction(employee, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
 };
 
 
@@ -578,22 +578,22 @@ exports.createpatientControllerFunction = (req, res) => {
     last_name: req.body.lastname,
     address: req.body.address,
     city: req.body.city,
-    contact:req.body.contact,
-    email_id:req.body.emailid,
-    created_by:req.body.createdby
- }
- console.log("testing  patient object", patient);
- // calling patient model function.......................................
- console.log("2.Calling to create: patient model function..");
- console.log("3.calling patient model");
- //modle.modelfunction
- Tutorial.createpatientmodelFunction(patient, (err, data) => {
-   if (err)
-     res.status(500).send({
-       message: err.message || "Some error occurred while creating the Tutorial."
-     });
-   else res.send(data);
- });
+    contact: req.body.contact,
+    email_id: req.body.emailid,
+    created_by: req.body.createdby
+  }
+  console.log("testing  patient object", patient);
+  // calling patient model function.......................................
+  console.log("2.Calling to create: patient model function..");
+  console.log("3.calling patient model");
+  //modle.modelfunction
+  Tutorial.createpatientmodelFunction(patient, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
 };
 
 //Create task Controller function---------------------------
@@ -605,23 +605,23 @@ exports.createtaskControllerFunction = (req, res) => {
     designation: req.body.designation,
     preority: req.body.preority,
     doctor_id: req.body.doctorid,
-    patient_id:req.body.patientid,
-    assign_to:req.body.assignto,
-    assign_by:req.body.assignby,
-    created_by:req.body.createdby
- }
- console.log("testing   task object", task);
- // calling patient model function.......................................
- console.log("2.Calling to create: task model function..");
- console.log("3.calling task model");
- //modle.modelfunction
- Tutorial.createtaskmodelFunction(task, (err, data) => {
-   if (err)
-     res.status(500).send({
-       message: err.message || "Some error occurred while creating the Tutorial."
-     });
-   else res.send(data);
- });
+    patient_id: req.body.patientid,
+    assign_to: req.body.assignto,
+    assign_by: req.body.assignby,
+    created_by: req.body.createdby
+  }
+  console.log("testing   task object", task);
+  // calling patient model function.......................................
+  console.log("2.Calling to create: task model function..");
+  console.log("3.calling task model");
+  //modle.modelfunction
+  Tutorial.createtaskmodelFunction(task, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    else res.send(data);
+  });
 };
 
 
@@ -634,9 +634,9 @@ exports.createuserControllerFunction = (req, res) => {
     last_name: req.body.lastname,
     email_id: req.body.emailid,
     password: req.body.password,
-    is_active:req.body.isactive,
-    created_by:req.body. createdby
-   
+    is_active: req.body.isactive,
+    created_by: req.body.createdby
+
   }
   console.log("testing user object", user);
   // calling todoctormodel function.......................................
@@ -672,7 +672,7 @@ exports.findAlldoctor = (req, res) => {
 };
 
 // Retrieve all find employee Tutorials from the database (with condition).........
-exports.findAllemployee= (req, res) => {
+exports.findAllemployee = (req, res) => {
   const title = req.body.name;
 
   Tutorial.getAllemployee(title, (err, data) => {
@@ -685,7 +685,7 @@ exports.findAllemployee= (req, res) => {
 };
 
 // Retrieve all find patient Tutorials from the database (with condition)............
-exports.findAllpatient= (req, res) => {
+exports.findAllpatient = (req, res) => {
   const title = req.body.first_name;
 
   Tutorial.getAllpatient(title, (err, data) => {
@@ -699,7 +699,7 @@ exports.findAllpatient= (req, res) => {
 
 
 // Retrieve all find task Tutorials from the database (with condition).............
-exports.findAlltask= (req, res) => {
+exports.findAlltask = (req, res) => {
   const title = req.body.name;
 
   Tutorial.getAlltask(title, (err, data) => {
@@ -733,7 +733,7 @@ exports.findAlluser = (req, res) => {
 
 
 // Update a doctor Tutorial identified by the id in the request............
-exports.updatedoctor= (req, res) => {
+exports.updatedoctor = (req, res) => {
   // Validate Request
   if (!req.body) {
     res.status(400).send({
@@ -775,7 +775,7 @@ exports.updateemployee = (req, res) => {
     name: req.body.name
   };
 
-  Tutorial.updateemployee (
+  Tutorial.updateemployee(
     req.params.id,
     employeeObject,
     (err, data) => {
@@ -786,7 +786,7 @@ exports.updateemployee = (req, res) => {
           });
         } else {
           res.status(500).send({
-            message: "Error updating Tutorial with id " + req.employee .id
+            message: "Error updating Tutorial with id " + req.employee.id
           });
         }
       } else res.send(data);
@@ -806,9 +806,9 @@ exports.updatepatient = (req, res) => {
     first_name: req.body.name
   };
 
-  Tutorial.updatepatient (
+  Tutorial.updatepatient(
     req.params.id,
-   patientObject,
+    patientObject,
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
@@ -817,7 +817,7 @@ exports.updatepatient = (req, res) => {
           });
         } else {
           res.status(500).send({
-            message: "Error updating Tutorial with id " + req.patient .id
+            message: "Error updating Tutorial with id " + req.patient.id
           });
         }
       } else res.send(data);
@@ -837,18 +837,18 @@ exports.updatetask = (req, res) => {
     name: req.body.name
   };
 
-  Tutorial.updatetask (
+  Tutorial.updatetask(
     req.params.id,
     taskObject,
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Tutorial with id ${req.task .id}.`
+            message: `Not found Tutorial with id ${req.task.id}.`
           });
         } else {
           res.status(500).send({
-            message: "Error updating Tutorial with id " + req.task .id
+            message: "Error updating Tutorial with id " + req.task.id
           });
         }
       } else res.send(data);
@@ -864,23 +864,23 @@ exports.updateuser = (req, res) => {
     });
   }
   const userObject = {
-    user_id:req.body.userid,
+    user_id: req.body.userid,
     first_name: req.body.firstname,
-    last_name:req.body.lastname,
-    email_id:req.body.emailid,
-    password:req.body.password,
-    is_active:req.body.isactive,
-    created_by:req.body.createdby
+    last_name: req.body.lastname,
+    email_id: req.body.emailid,
+    password: req.body.password,
+    is_active: req.body.isactive,
+    created_by: req.body.createdby
   };
 
-  Tutorial.updateuser (
+  Tutorial.updateuser(
     req.params.userid,
     userObject,
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Tutorial with id ${req. id}.`
+            message: `Not found Tutorial with id ${req.id}.`
           });
         } else {
           res.status(500).send({
@@ -893,9 +893,72 @@ exports.updateuser = (req, res) => {
 };
 
 
+function isemailValidation(data) {
+  var myRegEx = /^\S+@\S+\.\S+$/;
+  var isValid = (myRegEx.test(data));
+  if (isValid) {
+    console.log(isValid, "true")
+    return true;
+  } else {
+    console.log(isValid, "false")
+    return false;
+  }
+}
+
+//Create user Controller function---------------------------
+exports.createconstructControllerFunction = (req, res) => {
+  console.log("1.create construct controller function.."); // log to check on terminal
+  console.log("postmen request req.body.", req.body);
+
+  // var ispassValid = (isemailValidation(req.body.name));
+  // if (!ispassValid) {
+  //   console.log("invalid")
+  // } else {
+  //   console.log("valid")
+  // }
 
 
 
+
+  let personArray = [{
+    name: "arjun",
+    age: 37,
+    occupation: "devoleper"
+  }, {
+    name: "ajay",
+    age: 27,
+    occupation: "devoleper"
+  }, {
+    name: "arav",
+    age: 9,
+    occupation: "devoleper"
+  }, {
+    name: "arya",
+    age: 19,
+    occupation: "devoleper"
+  }, {
+    name: "bhavana",
+    age: 20,
+    occupation: "devoleper"
+  }];
+
+  //console.log("my name is ",personArray[0].name); 
+  var newNameArray = [];
+  for (var i = 0; i < personArray.length; i++) {
+    var temp =  {
+      "name": personArray[i].name
+    }
+    newNameArray.push(temp);
+  }
+
+  console.log("New name array ", newNameArray);
+
+
+  res.send({
+    "result": newNameArray
+  });
+
+}
 
 
 // Delete a doctor Tutorial with the specified id in the request......................
@@ -919,7 +982,7 @@ exports.deletedoctor = (req, res) => {
 }
 
 // Delete a employee Tutorial with the specified id in the request.........................
-exports.deleteemployee= (req, res) => {
+exports.deleteemployee = (req, res) => {
   Tutorial.deleteemployee(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -939,7 +1002,7 @@ exports.deleteemployee= (req, res) => {
 }
 
 // Delete a patient Tutorial with the specified id in the request......................
-exports.deletepatient= (req, res) => {
+exports.deletepatient = (req, res) => {
   Tutorial.deletepatient(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -961,7 +1024,7 @@ exports.deletepatient= (req, res) => {
 
 // Delete a task Tutorial with the specified id in the request..........................
 exports.deletetask = (req, res) => {
-  Tutorial.deletetask (req.params.id, (err, data) => {
+  Tutorial.deletetask(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
         res.status(404).send({
@@ -1206,6 +1269,12 @@ exports.createpatient2ControllerFunction = (req, res) => {
 };
 
 
+
+
+
+
+
+
 // patient find........................................
 exports.findAllpatient2 = (req, res) => {
   const title = req.body.patientName;
@@ -1221,7 +1290,7 @@ exports.findAllpatient2 = (req, res) => {
 
 
 //Update a Tutorial identified by the id in the request....................
-exports.updatepatient2= (req, res) => {
+exports.updatepatient2 = (req, res) => {
   // Validate Request
   if (!req.body) {
     res.status(400).send({
@@ -1234,7 +1303,7 @@ exports.updatepatient2= (req, res) => {
 
   Tutorial.updatepatient2(
     req.params.id,
-   patient2Object,
+    patient2Object,
     (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
@@ -1341,41 +1410,41 @@ exports.deleteAll = (req, res) => {
 
 
 // arguments error and data
-exports.fileErrorFirstCallback   = (err, data) => {
-   console.log("Function successfully executed");
-   
-   const fs = require("fs");
-   // This file does not exists
-   const file = "file.txt";
-   
-   // Error first callback
-   // function with two
-   // arguments error and data
-   const ErrorFirstCallback = (err, data) => {
-   if (err) {
-     return console.log(err);
-   }
-   console.log("Function successfully executed");
-   };
-   
-   // function execution
-   // This will return
-   // error because file do
-   // not exist
-   fs.readFile(file, ErrorFirstCallback);
-   
+exports.fileErrorFirstCallback = (err, data) => {
+  console.log("Function successfully executed");
+
+  const fs = require("fs");
+  // This file does not exists
+  const file = "file.txt";
+
+  // Error first callback
+  // function with two
+  // arguments error and data
+  const ErrorFirstCallback = (err, data) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("Function successfully executed");
+  };
+
+  // function execution
+  // This will return
+  // error because file do
+  // not exist
+  fs.readFile(file, ErrorFirstCallback);
+
 };
- //list item......................................................
+//list item......................................................
 
 exports.listitems = (err, data) => {
-  const listItems = function(items) {
-    items.forEach(function(item) {
+  const listItems = function (items) {
+    items.forEach(function (item) {
       console.log(item)
     })
   }
-  
+
   const items = ["Buy milk", "Buy coffee"]
-  
+
   listItems(items)
 
 };
@@ -1385,54 +1454,54 @@ exports.promises = (req, res) => {
   function getSumNum(a, b) {
     const customPromise = new Promise((resolve, reject) => {
       const sum = a + b;
-  
-      if(sum <= 5){
+
+      if (sum <= 5) {
         resolve("Let's go!!")
       } else {
         reject(new Error('Oops!.. Number must be less than 5'))
       }
     })
-  
+
     return customPromise
   }
-  
+
   // consuming the promise
   getSumNum(1, 3).then(data => {
     console.log(data)
   })
-  .catch(err => {
-    console.log(err)
-  })
+    .catch(err => {
+      console.log(err)
+    })
 }
 
 //promisez2............................................................
 exports.promises2 = (req, res) => {
   console.log("1.create promises2 controller function.."); // log to check on terminal
 
-  var promise = new Promise(function(resolve, reject) { 
-    const x = "geeksforgeeks"; 
+  var promise = new Promise(function (resolve, reject) {
+    const x = "geeksforgeeks";
     const y = "geeksforgeeks"
-    if(x === y) { 
-      resolve(); 
-    } else { 
-      reject(); 
-    } 
-  }); 
-      
-  promise. 
-      then(function () { 
-          console.log('Success, You are a GEEK'); 
-      }). 
-      catch(function () { 
-          console.log('Some error has occurred'); 
-      });
-} 
+    if (x === y) {
+      resolve();
+    } else {
+      reject();
+    }
+  });
+
+  promise.
+    then(function () {
+      console.log('Success, You are a GEEK');
+    }).
+    catch(function () {
+      console.log('Some error has occurred');
+    });
+}
 
 function isNumberValidation(field) {
-var isNumber = Number.isInteger(field);
+  var isNumber = Number.isInteger(field);
   if (isNumber) {
 
-    console.log(field.toString() , "is number")
+    console.log(field.toString(), "is number")
 
     if (field.toString().length >= 1 && field.toString().length <= 10) {
       // if (fileYear <= 12 && fileYear >= 1) {
@@ -1451,13 +1520,13 @@ exports.number = (req, res) => {
   console.log("1.create number controller function..");
 
   var isId = (isNumberValidation(req.body.id));
-      if (!isId) {
-        return res.status(400).json({
-          success: 0,
-          message: "Invalid Input Request!"
-        });
-      }else{
-        console.log("true number")
-      }
-  
+  if (!isId) {
+    return res.status(400).json({
+      success: 0,
+      message: "Invalid Input Request!"
+    });
+  } else {
+    console.log("true number")
+  }
+
 }
