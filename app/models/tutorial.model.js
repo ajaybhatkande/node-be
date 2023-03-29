@@ -1,4 +1,8 @@
 const sql = require("./db.js");
+var bcrypt = require('bcryptjs');
+var salt = bcrypt.genSaltSync(7);
+
+var JWT = require('../fn/JWT');
 
 // constructor
 const Tutorial = function (tutorial) {
@@ -159,16 +163,70 @@ exports.gcreatetaskmodelFunction = (task, result) => {
 //user model.........................................................
 exports.createusermodelFunction = (user, result) => {
   console.log("3. Create user Model Function Called");
-  var query = `INSERT INTO user_tb ( first_name,last_name,email_id,password,is_active,created_by) VALUES ('${user.first_name}','${user.last_name}','${user.email_id}','${user.password}','${user.is_active}','${user.created_by}')`;
-  sql.query(query, (err, res) => {
+  var selectQuery = `SELECT * FROM user_tb  WHERE email_id = '${user.email_id}'`;
+  sql.query(selectQuery, (err, res) => {
     if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
+      return result(err, null);
     }
-    result(null, { id: res.insertId, ...user });
+    console.log("res: ", res);
+    if (res.length > 0) {
+      return result({
+        status: 409
+      }, null);
+    } else {
+      var encryptedPassword = bcrypt.hashSync(user.apassword, salt)
+      var query = `INSERT INTO user_tb ( first_name,last_name,email_id,apassword,is_active,created_by) VALUES ('${user.first_name}','${user.last_name}','${user.email_id}','${encryptedPassword}','${user.is_active}','${user.created_by}')`;
+      sql.query(query, (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          return result(err, null);
+        }
+        return result(null, { id: res.insertId, ...user });
+      });
+    }
   });
 }
+
+exports.logInModelFunction = (userObject, result) => {
+  console.log("3. Create user Model Function Called");
+  var selectQuery = `SELECT * FROM user_tb  WHERE email_id = '${userObject.email_id}'`;
+  sql.query(selectQuery, (err, res) => {
+    if (err) {
+      return result(err, null);
+    }
+    console.log("user pass",userObject.apassword)
+    console.log("res: ", res);
+    if (res.length > 0) {
+      console.log(res[0].apassword)
+      // var newPass = bcrypt.hashSync(userObject.apassword, salt);
+      let compare = bcrypt.compareSync(userObject.apassword, res[0].apassword)
+      console.log(compare);
+      if (compare == false) {
+        console.log("Email and password does not match")
+        return result({
+          status: 404
+        }, null);
+      }
+      var user = {
+        user_id: res[0].user_id,
+        first_name: res[0].first_name,
+        last_name: res[0].last_name,
+        email_id: res[0].email_id
+      }
+      console.log("user", user);
+      var UserObject = {
+        user: user,
+        token: JWT.issue(user)
+      }
+      return result(null, UserObject);
+    } else {
+      return result({
+        status: 404
+      }, null);
+    }
+  });
+}
+
 
 
 

@@ -633,7 +633,7 @@ exports.createuserControllerFunction = (req, res) => {
     first_name: req.body.firstname,
     last_name: req.body.lastname,
     email_id: req.body.emailid,
-    password: req.body.password,
+    apassword: req.body.apassword,
     is_active: req.body.isactive,
     created_by: req.body.createdby
 
@@ -644,11 +644,48 @@ exports.createuserControllerFunction = (req, res) => {
   console.log("3.callingusermodel");
   //modle.modelfunction
   Tutorial.createusermodelFunction(user, (err, data) => {
-    if (err)
+    if (err) {
+      if (err.status == 409) {
+        return res.status(409).send({
+          message: "Already Exist!"
+        });
+      }
       res.status(500).send({
         message: err.message || "Some error occurred while creating the Tutorial."
       });
-    else res.send(data);
+    }
+    else {
+      res.send(data);
+    }
+  });
+};
+
+
+//Create user Controller function---------------------------
+exports.userlogInControllerFunction = (req, res) => {
+  console.log("1.login user controller function.."); // log to check on terminal
+  const user = { 
+    email_id: req.body.email_id,
+    apassword: req.body.apassword,
+ 
+  }
+  console.log("testing user object", user);
+ 
+  //modle.modelfunction
+  Tutorial.logInModelFunction(user, (err, data) => {
+    if (err) {
+      if (err.status == 404) {
+        return res.status(404).send({
+          message: "Invalid Credentials!"
+        });
+      }
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the Tutorial."
+      });
+    }
+    else {
+      res.send(data);
+    }
   });
 };
 
@@ -945,7 +982,7 @@ exports.createconstructControllerFunction = (req, res) => {
   //console.log("my name is ",personArray[0].name); 
   var newNameArray = [];
   for (var i = 0; i < personArray.length; i++) {
-    var temp =  {
+    var temp = {
       "name": personArray[i].name
     }
     newNameArray.push(temp);

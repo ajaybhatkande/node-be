@@ -110,6 +110,7 @@ router.post("/task/create", tutorials.createtaskControllerFunction);
 //create user......................................................................
 router.post("/user/create", tutorials.createuserControllerFunction);
 
+router.post("/user/login", tutorials.userlogInControllerFunction);
 
 
 //find doctor........................................................................
